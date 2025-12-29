@@ -1,0 +1,193 @@
+@import '../../../styles/design-tokens.scss';
+
+.telehealth-section {
+  padding: $space-20 0;
+  background-color: $neutral-50;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-6;
+  }
+
+  .hero-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    color: $primary-purple-dark;
+    text-align: center;
+    margin-bottom: $space-4;
+  }
+
+  .hero-subtitle {
+    font-size: $font-size-lg;
+    color: $neutral-600;
+    text-align: center;
+    margin-bottom: $space-16;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.providers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-10;
+  margin-bottom: $space-16;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+.provider-card {
+  background-color: white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba($primary-purple, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba($primary-purple, 0.15);
+  }
+
+  .provider-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: $neutral-100;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .provider-content {
+    padding: $space-8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  .provider-name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $primary-purple-dark;
+    margin-bottom: $space-2;
+  }
+
+  .provider-credentials {
+    font-size: $font-size-sm;
+    color: $neutral-600;
+    margin-bottom: $space-6;
+    font-style: italic;
+  }
+
+  .telehealth-link {
+    display: inline-block;
+    padding: $space-3 $space-6;
+    background-color: $secondary-coral;
+    color: white;
+    text-decoration: none;
+    border-radius: $radius-md;
+    font-weight: $font-weight-semibold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: auto;
+
+    &:hover {
+      background-color: darken($secondary-coral, 10%);
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.telehealth-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-10;
+  margin-bottom: $space-16;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+.info-block {
+  background-color: $neutral-white;
+  border: 2px solid $neutral-200;
+  padding: $space-8;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: $primary-purple;
+    box-shadow: 0 12px 24px rgba(74, 123, 167, 0.15);
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, $neutral-white 0%, $primary-purple-light 100%);
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $primary-purple-dark;
+    margin-bottom: $space-4;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding-left: $space-6;
+    list-style-position: outside;
+
+    li {
+      margin-bottom: $space-3;
+      color: $neutral-700;
+      line-height: 1.6;
+      font-size: $font-size-base;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.note-box {
+  background-color: $primary-purple-light;
+  padding: $space-6;
+  border-radius: $radius-md;
+  margin-bottom: $space-12;
+
+  p {
+    margin: 0;
+    color: $neutral-800;
+    line-height: 1.6;
+    font-size: $font-size-base;
+
+    strong {
+      font-weight: $font-weight-semibold;
+      color: $primary-purple-dark;
+    }
+  }
+}
+
+app-cta {
+  display: flex;
+  justify-content: center;
+}

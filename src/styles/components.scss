@@ -1,0 +1,208 @@
+@import './design-tokens.scss';
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-3 $space-6;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  border: none;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-base;
+  text-decoration: none;
+  gap: $space-2;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid $primary-purple;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background-color: $primary-purple;
+  color: $neutral-white;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-purple-dark;
+    color: $neutral-white;
+    box-shadow: $shadow-lg;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+.btn-secondary {
+  background-color: $neutral-100;
+  color: $neutral-800;
+  border: 2px solid $neutral-300;
+
+  &:hover:not(:disabled) {
+    background-color: $neutral-50;
+    color: $neutral-800;
+    border-color: $neutral-400;
+    box-shadow: $shadow-md;
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: $primary-purple;
+  border: 2px solid $primary-purple;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-purple-light;
+    color: $primary-purple;
+  }
+}
+
+.btn-success {
+  background-color: $success-green;
+  color: $neutral-white;
+
+  &:hover:not(:disabled) {
+    background-color: darken($success-green, 10%);
+    color: $neutral-white;
+  }
+}
+
+.btn-lg {
+  padding: $space-4 $space-8;
+  font-size: $font-size-lg;
+}
+
+.btn-sm {
+  padding: $space-2 $space-4;
+  font-size: $font-size-sm;
+}
+
+// Cards
+.card {
+  background-color: $neutral-white;
+  border-radius: $radius-lg;
+  padding: $space-6;
+  box-shadow: $shadow-base;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+}
+
+.card-elevated {
+  box-shadow: $shadow-md;
+
+  &:hover {
+    box-shadow: $shadow-xl;
+  }
+}
+
+// Forms
+.form-group {
+  margin-bottom: $space-6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: $space-2;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  color: $neutral-700;
+}
+
+.form-control {
+  width: 100%;
+  padding: $space-3 $space-4;
+  font-size: $font-size-base;
+  border: 2px solid $neutral-300;
+  border-radius: $radius-base;
+  transition: all $transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-purple;
+    box-shadow: 0 0 0 3px $primary-purple-light;
+  }
+
+  &:disabled {
+    background-color: $neutral-100;
+    cursor: not-allowed;
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+// Badges
+.badge {
+  display: inline-block;
+  padding: $space-2 $space-4;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-full;
+  white-space: nowrap;
+}
+
+.badge-primary {
+  background-color: $primary-purple-light;
+  color: $primary-purple-dark;
+}
+
+.badge-success {
+  background-color: $success-green-light;
+  color: darken($success-green, 20%);
+}
+
+.badge-warning {
+  background-color: $warning-orange-light;
+  color: darken($warning-orange, 20%);
+}
+
+.badge-error {
+  background-color: $error-red-light;
+  color: darken($error-red, 20%);
+}
+
+// Alerts
+.alert {
+  padding: $space-4;
+  border-radius: $radius-base;
+  margin-bottom: $space-4;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.alert-success {
+  background-color: $success-green-light;
+  color: darken($success-green, 20%);
+}
+
+.alert-warning {
+  background-color: $warning-orange-light;
+  color: darken($warning-orange, 20%);
+}
+
+.alert-error {
+  background-color: $error-red-light;
+  color: darken($error-red, 20%);
+}
+
+.alert-info {
+  background-color: $primary-purple-light;
+  color: $primary-purple-dark;
+}

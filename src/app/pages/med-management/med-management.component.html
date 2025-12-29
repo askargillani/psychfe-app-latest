@@ -1,0 +1,67 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Medication Management & Monitoring</h1>
+    <p class="hero-subtitle">Safe, effective medication management tailored to your unique needs.</p>
+  </div>
+</section>
+
+<!-- What is Med Management Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Medication Management?</h2>
+        <p class="intro-text">
+          Medication management is a level of outpatient treatment involving the initial evaluation of your need for psychotropic medications, provision of a prescription, and ongoing medical monitoring.
+        </p>
+        <p class="intro-text">
+          This comprehensive process includes thorough review of prescribed drugs and their possible side effects to create treatment plans and monitor their safety and efficacy. We monitor, reconcile medications, and ensure you achieve desired outcomes.
+        </p>
+        <p class="intro-text">
+          <strong>Our goal is to find the right medication at the right dose to optimize your mental health and quality of life.</strong>
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/medmanagement.jpg" alt="Medication management and monitoring" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Medication Management Services</h2>
+      <p>We provide comprehensive medication management including:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let service of symptoms">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Find Your Optimal Treatment"
+  description="Effective medication management can significantly improve your quality of life. Let our expert providers help you find the right medication regimen for your unique needs."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

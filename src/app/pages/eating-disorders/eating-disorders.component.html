@@ -1,0 +1,71 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Understanding & Treating Eating Disorders</h1>
+    <p class="hero-subtitle">Find freedom. Compassionate, specialized care to help you heal from eating disorders.</p>
+  </div>
+</section>
+
+<!-- What is Eating Disorder Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What are Eating Disorders?</h2>
+        <p class="intro-text">
+          Eating disorders are serious health conditions that affect both physical and mental health. The most common types are anorexia, bulimia, and binge-eating disorder. They involve problems in how a person thinks about food, eating, weight, and shape, leading to dangerous eating behaviors that can affect nutrition and harm body systems.
+        </p>
+        <p class="intro-text">
+          They are also linked with depression, anxiety, self-harm, and suicidal thoughts. With proper professional treatment combining therapy, medical care, and nutritional support, people with eating disorders can recover and develop a healthy relationship with food and their bodies.
+        </p>
+        <p class="intro-text">
+          <strong>Recovery is possible. You deserve support from providers who understand eating disorders and are committed to your healing.</strong>
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/eatingdisorder.jpg" alt="Support for eating disorders" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Symptoms Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of Eating Disorders</h2>
+      <p>Eating disorders can manifest in many ways. Here are common signs:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+
+    <div class="symptoms-note">
+      <p><strong>If you're having thoughts of suicide:</strong> Please reach out for help immediately. Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or text HOME to <a href="sms:741741">741741</a> (Crisis Text Line). Both are available 24/7 and completely free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Start Your Recovery Journey"
+  description="Eating disorders are serious but treatable. With compassionate, specialized care, you can overcome your eating disorder and rebuild a healthy, fulfilling relationship with food and your body."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

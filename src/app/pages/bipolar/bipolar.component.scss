@@ -1,0 +1,436 @@
+@import '../../../styles/design-tokens.scss';
+
+// Hero Section
+.hero-section {
+  background: transparent;
+  color: $neutral-900;
+  padding: $space-16 $space-4;
+  text-align: center;
+
+  h1 {
+    color: $neutral-900;
+    font-size: $font-size-6xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-5xl;
+    }
+  }
+
+  .hero-subtitle {
+    color: $neutral-700;
+    font-size: $font-size-xl;
+  }
+}
+
+// Intro Section
+.intro-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-white;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-12;
+  align-items: center;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+.intro-content {
+  h2 {
+    color: $primary-purple-dark;
+    font-size: $font-size-5xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  .intro-text {
+    font-size: $font-size-lg;
+    line-height: $line-height-relaxed;
+    color: $neutral-700;
+    margin-bottom: $space-6;
+
+    strong {
+      color: $primary-purple-dark;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+.intro-cta {
+  display: flex;
+  gap: $space-4;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.intro-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(74, 123, 167, 0.2) 0%, rgba(74, 123, 167, 0.05) 50%, transparent 75%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+
+    @media (max-width: $breakpoint-md) {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
+  .image-placeholder {
+    width: 100%;
+    max-width: 450px;
+    height: 450px;
+    margin: 0 auto;
+    border-radius: $radius-xl;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 12px 32px rgba(74, 123, 167, 0.15);
+
+    @media (max-width: $breakpoint-md) {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+// Symptoms Section
+.symptoms-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-50;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: $space-16;
+
+  h2 {
+    color: $primary-purple-dark;
+    font-size: $font-size-5xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $neutral-600;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.symptoms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-6;
+  margin-bottom: $space-12;
+}
+
+.symptom-card {
+  background-color: $neutral-white;
+  border: 2px solid $neutral-200;
+  padding: $space-6;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: $primary-purple;
+    box-shadow: 0 8px 16px rgba(74, 123, 167, 0.12);
+    transform: translateY(-4px);
+    background: linear-gradient(135deg, $neutral-white 0%, $primary-purple-light 100%);
+  }
+
+  h3 {
+    color: $primary-purple-dark;
+    font-size: $font-size-lg;
+    margin-bottom: $space-2;
+  }
+
+  p {
+    color: $neutral-600;
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+  }
+}
+
+.symptoms-note {
+  background-color: $accent-rose-light;
+  padding: $space-6;
+  border-radius: $radius-lg;
+  text-align: center;
+
+  p {
+    color: $neutral-800;
+    margin-bottom: 0;
+
+    a {
+      color: $accent-amber;
+      font-weight: $font-weight-semibold;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Approach Section
+.approach-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-white;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $space-8;
+}
+
+.resource-card {
+  background-color: $neutral-50;
+  border: 2px solid $neutral-200;
+  padding: $space-8;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  &:hover {
+    border-color: $secondary-coral;
+    box-shadow: 0 10px 20px rgba(107, 163, 153, 0.15);
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, $neutral-50 0%, $secondary-coral-light 100%);
+  }
+
+  .resource-icon {
+    font-size: $font-size-5xl;
+    margin-bottom: $space-4;
+  }
+
+  h3 {
+    color: $secondary-coral-dark;
+    margin-bottom: $space-3;
+  }
+
+  p {
+    color: $neutral-600;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// Treatment Section
+.treatment-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-50;
+}
+
+.treatment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-8;
+}
+
+.treatment-card {
+  background-color: $neutral-white;
+  border: 2px solid $neutral-200;
+  padding: $space-8;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: $accent-amber;
+    box-shadow: 0 10px 20px rgba(155, 111, 168, 0.15);
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, $neutral-white 0%, $accent-rose-light 100%);
+  }
+
+  h3 {
+    color: $accent-amber;
+    margin-bottom: $space-3;
+  }
+
+  p {
+    color: $neutral-600;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// Why Circle Section
+.why-circle-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-white;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $space-8;
+}
+
+.why-card {
+  background-color: $primary-purple-light;
+  border: 2px solid $primary-purple;
+  padding: $space-6;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: 0 10px 24px rgba(74, 123, 167, 0.2);
+    transform: translateY(-4px);
+  }
+
+  h3 {
+    color: $primary-purple-dark;
+    margin-bottom: $space-3;
+  }
+
+  p {
+    color: $neutral-700;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// CTA Section
+.cta-section {
+  background: transparent;
+  color: $neutral-900;
+  padding: $space-20 $space-4;
+  text-align: center;
+}
+
+.cta-content {
+  text-align: center;
+  padding: $space-12 $space-4;
+
+  h2 {
+    color: $neutral-900;
+    font-size: $font-size-5xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  p {
+    color: $neutral-700;
+    font-size: $font-size-lg;
+    margin-bottom: $space-8;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.cta-buttons {
+  display: flex;
+  gap: $space-4;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: $neutral-900;
+    border-color: $neutral-900;
+
+    &:hover {
+      background-color: rgba($neutral-900, 0.05);
+    }
+  }
+}
+
+// Crisis Section
+.crisis-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-50;
+}
+
+.crisis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-8;
+}
+
+.crisis-card {
+  background-color: $neutral-white;
+  border: 2px solid $error-red;
+  padding: $space-8;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  text-align: center;
+
+  &:hover {
+    box-shadow: 0 12px 24px rgba(239, 68, 68, 0.15);
+    transform: translateY(-4px);
+  }
+
+  h3 {
+    color: $error-red;
+    margin-bottom: $space-3;
+  }
+
+  p {
+    color: $neutral-700;
+    margin-bottom: $space-3;
+
+    a {
+      color: $error-red;
+      font-weight: $font-weight-semibold;
+      text-decoration: underline;
+
+      &:hover {
+        color: darken($error-red, 10%);
+      }
+    }
+  }
+
+  .crisis-note {
+    font-size: $font-size-sm;
+    color: $neutral-600;
+    margin-bottom: 0;
+  }
+}
+
+.btn-link {
+  color: inherit;
+  font-weight: $font-weight-semibold;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

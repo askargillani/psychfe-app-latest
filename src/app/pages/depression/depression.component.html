@@ -1,0 +1,68 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Understanding & Treating Depression</h1>
+    <p class="hero-subtitle">You don't have to face this alone. Compassionate, expert care to help you heal.</p>
+  </div>
+</section>
+
+<!-- What is Depression Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Depression?</h2>
+        <p class="intro-text">
+          Depression, also called major depressive disorder or clinical depression, is more than just feeling sad. It's a mood disorder that causes persistent feelings of sadness, hopelessness, and loss of interest in activities you once enjoyed. Depression affects how you think, feel, and behave—and can significantly impact your daily life, relationships, work, and physical health.
+        </p>
+        <p class="intro-text">
+          The important thing to know is this: <strong>depression is treatable</strong>, and <strong>you are not alone</strong>. With the right support and care, people with depression recover and go on to live full, meaningful lives.
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/depression.jpg" alt="Support and recovery from depression" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Symptoms Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Common Signs of Depression</h2>
+      <p>Depression can feel different for different people. Here are common signs that may indicate depression:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+
+    <div class="symptoms-note">
+      <p><strong>If you're having thoughts of suicide:</strong> Please reach out for help immediately. Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or text HOME to <a href="sms:741741">741741</a> (Crisis Text Line). Both are available 24/7 and completely free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<app-cta 
+  heading="Take the First Step Toward Recovery"
+  description="Depression is treatable, and recovery is possible. Our compassionate team is ready to support you on your journey to feeling better and rediscovering hope."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>
+

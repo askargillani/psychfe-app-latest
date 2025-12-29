@@ -1,0 +1,67 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Understanding & Treating Insomnia</h1>
+    <p class="hero-subtitle">Reclaim your sleep. Compassionate care to help you overcome insomnia and rest well.</p>
+  </div>
+</section>
+
+<!-- What is Insomnia Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Insomnia?</h2>
+        <p class="intro-text">
+          Insomnia is a common sleep disorder that makes it hard to fall asleep or stay asleep, or causes a person to wake up too early and not be able to get back to sleep. This can drain energy, affect mood, health, work performance, and quality of life.
+        </p>
+        <p class="intro-text">
+          Insomnia is one of the most common sleep disorders and is highly treatable. Whether your insomnia is short-term or chronic, professional support can help you understand the underlying causes and develop strategies to improve your sleep.
+        </p>
+        <p class="intro-text">
+          <strong>With proper treatment and good sleep hygiene practices, you can restore restful, restorative sleep.</strong>
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/insomnia.jpg" alt="Insomnia treatment and support" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Symptoms Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of Insomnia</h2>
+      <p>Insomnia can affect sleep in different ways. Here are common signs:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Sleep Better Starting Tonight"
+  description="Restful sleep is essential for your health and wellbeing. Our providers specialize in sleep disorders and can help you overcome insomnia and establish healthy sleep patterns."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

@@ -1,0 +1,246 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Refer a Patient</h1>
+    <p class="hero-subtitle">We appreciate your trust in our services and are grateful for your referrals. Our team is dedicated to providing exceptional care to all patients. To refer a patient, please complete the following information. This will help us ensure a smooth and efficient intake process.</p>
+  </div>
+</section>
+
+<!-- Referral Form Section -->
+<section class="referral-form-section">
+  <div class="container">
+    <div class="referral-form-content">
+      
+      <p class="form-note">Once we receive your referral, our team will review the information and contact the patient directly to schedule an appointment. We will keep you updated on their progress.</p>
+
+      <!-- Success Message -->
+      <div *ngIf="successMessage" class="success-alert">
+        <div class="alert-icon">✓</div>
+        <div class="alert-content">
+          <h3>Success!</h3>
+          <p>Your referral has been submitted successfully. Our team will review the information and contact the patient to schedule an appointment.</p>
+        </div>
+      </div>
+
+      <form class="referral-form" #referralForm (ngSubmit)="onSubmit(referralForm)">
+        <!-- Patient Information Section -->
+        <fieldset class="form-section">
+          <legend>Patient Information</legend>
+          
+          <div class="form-group">
+            <label for="patient-name">Patient's Full Name *</label>
+            <input type="text" id="patient-name" name="patient-name" required [class.error]="validationErrors['patient-name']" />
+            <span class="error-message" *ngIf="validationErrors['patient-name']">{{ validationErrors['patient-name'] }}</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dob">Date of Birth *</label>
+              <input type="text" id="dob" name="dob" placeholder="MM/DD/YYYY" required [class.error]="validationErrors['dob']" />
+              <span class="error-message" *ngIf="validationErrors['dob']">{{ validationErrors['dob'] }}</span>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required [class.error]="validationErrors['phone']" />
+              <span class="error-message" *ngIf="validationErrors['phone']">{{ validationErrors['phone'] }}</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" [class.error]="validationErrors['email']" />
+              <span class="error-message" *ngIf="validationErrors['email']">{{ validationErrors['email'] }}</span>
+            </div>
+            <div class="form-group">
+              <label for="language">Preferred Language</label>
+              <input type="text" id="language" name="language" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Referring Provider Information Section -->
+        <fieldset class="form-section">
+          <legend>Referring Provider Information</legend>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="provider-name">Referring Provider's Name *</label>
+              <input type="text" id="provider-name" name="provider-name" required [class.error]="validationErrors['provider-name']" />
+              <span class="error-message" *ngIf="validationErrors['provider-name']">{{ validationErrors['provider-name'] }}</span>
+            </div>
+            <div class="form-group">
+              <label for="practice-name">Practice/Clinic Name *</label>
+              <input type="text" id="practice-name" name="practice-name" required [class.error]="validationErrors['practice-name']" />
+              <span class="error-message" *ngIf="validationErrors['practice-name']">{{ validationErrors['practice-name'] }}</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="provider-phone">Phone Number *</label>
+              <input type="tel" id="provider-phone" name="provider-phone" required [class.error]="validationErrors['provider-phone']" />
+              <span class="error-message" *ngIf="validationErrors['provider-phone']">{{ validationErrors['provider-phone'] }}</span>
+            </div>
+            <div class="form-group">
+              <label for="provider-email">Email Address *</label>
+              <input type="email" id="provider-email" name="provider-email" required [class.error]="validationErrors['provider-email']" />
+              <span class="error-message" *ngIf="validationErrors['provider-email']">{{ validationErrors['provider-email'] }}</span>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="referral-reason">Reason for Referral *</label>
+            <textarea id="referral-reason" name="referral-reason" rows="4" required [class.error]="validationErrors['referral-reason']"></textarea>
+            <span class="error-message" *ngIf="validationErrors['referral-reason']">{{ validationErrors['referral-reason'] }}</span>
+          </div>
+        </fieldset>
+
+        <!-- Insurance Information Section -->
+        <fieldset class="form-section">
+          <legend>Insurance and ID Information</legend>
+          <p class="section-note">We require insurance information. Please provide the following details:</p>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="insurance-provider">Insurance Provider *</label>
+              <input type="text" id="insurance-provider" name="insurance-provider" required [class.error]="validationErrors['insurance-provider']" />
+              <span class="error-message" *ngIf="validationErrors['insurance-provider']">{{ validationErrors['insurance-provider'] }}</span>
+            </div>
+            <div class="form-group">
+              <label for="policy-holder">Policy Holder's Name *</label>
+              <input type="text" id="policy-holder" name="policy-holder" required [class.error]="validationErrors['policy-holder']" />
+              <span class="error-message" *ngIf="validationErrors['policy-holder']">{{ validationErrors['policy-holder'] }}</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="policy-number">Policy Number</label>
+              <input type="text" id="policy-number" name="policy-number" />
+            </div>
+            <div class="form-group">
+              <label for="group-number">Group Number</label>
+              <input type="text" id="group-number" name="group-number" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Appointment Preferences Section -->
+        <fieldset class="form-section">
+          <legend>Appointment Preferences</legend>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="preferred-date">Preferred Appointment Date</label>
+              <input type="text" id="preferred-date" name="preferred-date" placeholder="MM/DD/YYYY" />
+            </div>
+            <div class="form-group">
+              <label for="preferred-time">Preferred Appointment Time</label>
+              <input type="text" id="preferred-time" name="preferred-time" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="preferred-provider">Preferred Practitioner</label>
+              <input type="text" id="preferred-provider" name="preferred-provider" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Location</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="location" value="virtual" />
+                Virtual
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="location" value="in-person" />
+                In Person
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Additional Notes Section -->
+        <fieldset class="form-section">
+          <legend>Additional Notes</legend>
+          
+          <div class="form-group full-width">
+            <label for="additional-notes">Additional Information</label>
+            <textarea id="additional-notes" name="additional-notes" rows="4"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-lg" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Submitting...' : 'Submit Referral' }}
+          </button>
+          <button type="reset" class="btn btn-outline btn-lg" (click)="clearErrors()" [disabled]="isSubmitting">Clear Form</button>
+        </div>
+      </form>
+
+      <div class="contact-info">
+        <p>If you have any questions, please do not hesitate to contact us:</p>
+        <ul>
+          <li>Phone: <a href="tel:719-208-4027">719-208-4027</a></li>
+          <li>Fax: 719-426-2525</li>
+          <li>Email: <a href="mailto:Office@circlepsych.io">Office@circlepsych.io</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Refer Section -->
+<section class="why-refer-section">
+  <div class="container">
+    <h2>Why Refer to Circle Psychiatry</h2>
+    
+    <div class="why-refer-content">
+      <p class="intro-text">
+        At Circle Psychiatry, we focus on providing an evidence-based approach to mental health services. Our mission is to embrace every individual with respect, dignity, compassion, hope, and empathy. Our team will always prioritize their well-being and support them through their recovery.
+      </p>
+
+      <p class="intro-text">
+        We respect your ongoing relationships with your patients and value the opportunity to collaborate with you on their treatment plans. We appreciate your trust in our services and are grateful for your referrals.
+      </p>
+
+      <p class="intro-text">
+        Once we receive your referral form, our team will review the information and contact the patient directly to schedule an appointment. We will keep you updated on their progress.
+      </p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Evidence-Based Care</h3>
+          <p>We utilize the latest research and proven treatment methodologies</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Patient-Centered Approach</h3>
+          <p>Every patient receives personalized care tailored to their unique needs</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Collaborative Treatment</h3>
+          <p>We maintain open communication with referring providers about patient progress</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Compassionate Team</h3>
+          <p>Our providers are dedicated to treating patients with dignity and respect</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<app-cta 
+  heading="Have Questions About Referring?"
+  description="Our team is here to help. Reach out with any questions about our referral process or services."
+  primaryButtonText="Call Us"
+  primaryButtonUrl="tel:719-208-4027"
+  secondaryButtonText="Email Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="false">
+</app-cta>

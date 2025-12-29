@@ -1,0 +1,71 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Healing from Trauma & PTSD</h1>
+    <p class="hero-subtitle">Recovery is possible. Compassionate, evidence-based care to help you heal from trauma.</p>
+  </div>
+</section>
+
+<!-- What is Trauma Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Trauma & PTSD?</h2>
+        <p class="intro-text">
+          Post-traumatic stress disorder (PTSD) is a mental health condition caused by an extremely stressful or terrifying event. Symptoms may include flashbacks, nightmares, severe anxiety, and uncontrollable thoughts about the event.
+        </p>
+        <p class="intro-text">
+          If symptoms last for months or years and affect the ability to function daily, professional treatment is available and effective. Trauma and PTSD affect school-aged children, teenagers, and adults of all ages.
+        </p>
+        <p class="intro-text">
+          <strong>You are not alone, and healing is possible.</strong> With specialized treatment and compassionate support, individuals recover from trauma and go on to rebuild their lives.
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/ptsd.jpg" alt="Trauma and PTSD recovery support" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Symptoms Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of PTSD</h2>
+      <p>Trauma responses can vary significantly from person to person. Here are common signs of PTSD:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+
+    <div class="symptoms-note">
+      <p><strong>If you're having thoughts of suicide:</strong> Please reach out for help immediately. Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or text HOME to <a href="sms:741741">741741</a> (Crisis Text Line). Both are available 24/7 and completely free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Begin Your Healing Journey"
+  description="Trauma is treatable. With evidence-based therapies and compassionate providers, you can heal from trauma and reclaim your sense of safety, hope, and peace."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

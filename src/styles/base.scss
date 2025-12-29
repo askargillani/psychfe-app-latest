@@ -1,0 +1,182 @@
+@import './design-tokens.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $neutral-800;
+  background-color: $neutral-white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+// Typography
+h1 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  margin-bottom: $space-6;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  margin-bottom: $space-6;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-snug;
+  margin-bottom: $space-4;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-snug;
+  margin-bottom: $space-4;
+}
+
+h5 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-snug;
+  margin-bottom: $space-3;
+}
+
+h6 {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-snug;
+  margin-bottom: $space-3;
+}
+
+p {
+  margin-bottom: $space-4;
+  line-height: $line-height-relaxed;
+}
+
+a {
+  color: $primary-purple;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $primary-purple-dark;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-purple;
+    outline-offset: 2px;
+  }
+}
+
+// Lists
+ul,
+ol {
+  margin-bottom: $space-4;
+  padding-left: $space-8;
+
+  li {
+    margin-bottom: $space-2;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Containers
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-4;
+
+  @media #{$media-sm} {
+    padding: 0 $space-6;
+  }
+
+  @media #{$media-lg} {
+    padding: 0 $space-8;
+  }
+}
+
+// Utility Classes
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $space-1; }
+.mt-2 { margin-top: $space-2; }
+.mt-3 { margin-top: $space-3; }
+.mt-4 { margin-top: $space-4; }
+.mt-6 { margin-top: $space-6; }
+.mt-8 { margin-top: $space-8; }
+.mt-12 { margin-top: $space-12; }
+.mt-16 { margin-top: $space-16; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $space-1; }
+.mb-2 { margin-bottom: $space-2; }
+.mb-3 { margin-bottom: $space-3; }
+.mb-4 { margin-bottom: $space-4; }
+.mb-6 { margin-bottom: $space-6; }
+.mb-8 { margin-bottom: $space-8; }
+.mb-12 { margin-bottom: $space-12; }
+.mb-16 { margin-bottom: $space-16; }
+
+.px-4 { padding: 0 $space-4; }
+.px-6 { padding: 0 $space-6; }
+.px-8 { padding: 0 $space-8; }
+
+.py-4 { padding: $space-4 0; }
+.py-6 { padding: $space-6 0; }
+.py-8 { padding: $space-8 0; }
+.py-12 { padding: $space-12 0; }
+.py-16 { padding: $space-16 0; }

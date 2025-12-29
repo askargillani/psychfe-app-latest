@@ -1,0 +1,69 @@
+import { Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ConditionsComponent } from './pages/conditions/conditions.component';
+import { ReferPatientComponent } from './pages/refer-patient/refer-patient.component';
+import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { AccessibilityComponent } from './pages/accessibility/accessibility.component';
+import { TelehealthComponent } from './pages/telehealth/telehealth.component';
+import { DepressionComponent } from './pages/depression/depression.component';
+import { BipolarComponent } from './pages/bipolar/bipolar.component';
+import { InclusiveTherapyComponent } from './pages/inclusive-therapy/inclusive-therapy.component';
+import { AnxietyComponent } from './pages/anxiety/anxiety.component';
+import { ADHDComponent } from './pages/adhd/adhd.component';
+import { TraumaComponent } from './pages/trauma/trauma.component';
+import { MoodDisordersComponent } from './pages/mood-disorders/mood-disorders.component';
+import { MedManagementComponent } from './pages/med-management/med-management.component';
+import { PanicAttacksComponent } from './pages/panic-attacks/panic-attacks.component';
+import { StressManagementComponent } from './pages/stress-management/stress-management.component';
+import { InsomniaComponent } from './pages/insomnia/insomnia.component';
+import { EatingDisordersComponent } from './pages/eating-disorders/eating-disorders.component';
+import { AddictionComponent } from './pages/addiction/addiction.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', redirectTo: '', pathMatch: 'full' },
+  { path: 'services', component: ServicesComponent },
+  { path: 'services/depression', component: DepressionComponent },
+  { path: 'services/bipolar', component: BipolarComponent },
+  { path: 'services/inclusive-therapy', component: InclusiveTherapyComponent },
+  { path: 'services/anxiety', component: AnxietyComponent },
+  { path: 'services/adhd', component: ADHDComponent },
+  { path: 'services/trauma', component: TraumaComponent },
+  { path: 'services/mood-disorders', component: MoodDisordersComponent },
+  { path: 'services/med-management', component: MedManagementComponent },
+  { path: 'services/panic-attacks', component: PanicAttacksComponent },
+  { path: 'services/stress-management', component: StressManagementComponent },
+  { path: 'services/insomnia', component: InsomniaComponent },
+  { path: 'services/eating-disorders', component: EatingDisordersComponent },
+  { path: 'services/addiction', component: AddictionComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  // { path: 'refer-patient', component: ReferPatientComponent },
+  { path: 'terms-conditions', component: TermsConditionsComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'accessibility', component: AccessibilityComponent },
+  { path: 'telehealth', component: TelehealthComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'blog/:id', component: BlogDetailComponent },
+  { path: 'conditions', component: ConditionsComponent },
+  { path: 'conditions/depression', component: DepressionComponent },
+  { path: 'conditions/bipolar', component: BipolarComponent },
+  { path: 'conditions/inclusive-therapy', component: InclusiveTherapyComponent },
+  { path: 'conditions/anxiety', component: AnxietyComponent },
+  { path: 'conditions/adhd', component: ADHDComponent },
+  { path: 'conditions/trauma', component: TraumaComponent },
+  { path: 'conditions/mood-disorders', component: MoodDisordersComponent },
+  { path: 'conditions/med-management', component: MedManagementComponent },
+  { path: 'conditions/panic-attacks', component: PanicAttacksComponent },
+  { path: 'conditions/stress-management', component: StressManagementComponent },
+  { path: 'conditions/insomnia', component: InsomniaComponent },
+  { path: 'conditions/eating-disorders', component: EatingDisordersComponent },
+  { path: 'conditions/addiction', component: AddictionComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
+];

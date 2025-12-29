@@ -1,0 +1,170 @@
+<nav class="navbar" (mouseleave)="closeSubmenu()">
+  <div class="navbar-container">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <a routerLink="/" class="logo">
+        <img src="/logo.png" alt="Circle Psychiatry" class="logo-img" />
+        <span class="logo-text">Circle Psychiatry</span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <div class="nav-items-center" *ngIf="!isMobile">
+      <div
+        *ngFor="let item of navItems"
+        class="nav-item-wrapper"
+        [class.has-children]="hasChildren(item)"
+        (mouseenter)="hasChildren(item) ? openSubmenu(item.label) : closeSubmenu()"
+      >
+        <a
+          *ngIf="!isExternal(item.href)"
+          [routerLink]="item.href"
+          class="nav-link"
+          [class.active]="activeSubmenu === item.label"
+        >
+          <span>{{ item.label }}</span>
+          <svg
+            *ngIf="hasChildren(item)"
+            class="chevron-icon"
+            [class.open]="activeSubmenu === item.label"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+
+        <a
+          *ngIf="isExternal(item.href)"
+          [href]="item.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-link"
+        >
+          <span>{{ item.label }}</span>
+          <svg
+            *ngIf="hasChildren(item)"
+            class="chevron-icon"
+            [class.open]="activeSubmenu === item.label"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+
+        <!-- Desktop Submenu -->
+        <!-- Desktop Submenu -->
+        <div
+          *ngIf="hasChildren(item) && activeSubmenu === item.label"
+          class="submenu"
+          (mouseenter)="cancelCloseSubmenu()"
+        > <a
+            *ngFor="let child of item.children"
+            [routerLink]="child.path"
+            class="submenu-link"
+            (click)="closeSubmenu()"
+          >
+            <span class="submenu-text">{{ child.label }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section - Book Online Button -->
+    <div class="right-section">
+      <a
+        href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+        target="_blank"
+        class="book-button"
+      >
+        Book Online
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        *ngIf="isMobile"
+        class="mobile-menu-toggle"
+        (click)="toggleMobileMenu()"
+        [class.open]="mobileMenuOpen"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div
+    class="mobile-nav-menu"
+    *ngIf="isMobile && mobileMenuOpen"
+  >
+    <div class="mobile-nav-items">
+      <div
+        *ngFor="let item of navItems"
+        class="mobile-nav-item"
+        [class.has-children]="hasChildren(item)"
+      >
+        <button
+          *ngIf="hasChildren(item)"
+          class="mobile-nav-toggle"
+          (click)="toggleSubmenu(item.label)"
+          [class.open]="activeSubmenu === item.label"
+        >
+          <span>{{ item.label }}</span>
+          <svg
+            class="chevron-icon"
+            [class.open]="activeSubmenu === item.label"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <a
+          *ngIf="!hasChildren(item) && !isExternal(item.href)"
+          [routerLink]="item.href"
+          class="mobile-nav-link"
+          (click)="closeMobileMenu()"
+        >
+          {{ item.label }}
+        </a>
+
+        <a
+          *ngIf="!hasChildren(item) && isExternal(item.href)"
+          [href]="item.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-nav-link"
+          (click)="closeMobileMenu()"
+        >
+          {{ item.label }}
+        </a>
+
+        <!-- Mobile Submenu -->
+        <!-- Mobile Submenu -->
+        <div
+          *ngIf="hasChildren(item) && activeSubmenu === item.label"
+          class="mobile-submenu"
+        > <a
+            *ngFor="let child of item.children"
+            [routerLink]="child.path"
+            class="mobile-submenu-link"
+            (click)="closeMobileMenu(); closeSubmenu()"
+          >
+            {{ child.label }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

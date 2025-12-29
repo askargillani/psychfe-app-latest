@@ -1,0 +1,31 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Conditions We Treat</h1>
+    <p class="hero-subtitle">Struggling with mental health challenges? You're not alone. Explore the conditions we treat and discover how our compassionate care can help you feel better.</p>
+  </div>
+</section>
+
+<!-- Conditions Grid Section -->
+<section class="conditions-section">
+  <div class="container">
+    <div class="conditions-grid">
+      <div class="condition-card" *ngFor="let condition of conditions">
+        <h3>{{ condition.name }}</h3>
+        <p>{{ condition.description }}</p>
+        <a [routerLink]="['/conditions', condition.id]" class="condition-link">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<app-cta 
+  heading="Ready to Get Started?"
+  description="If you're struggling with any of these conditions, you're not alone. Our compassionate team is here to help you find the right path to wellness and recovery."
+  primaryButtonText="Book an Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

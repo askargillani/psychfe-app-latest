@@ -1,0 +1,148 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>About Circle Psychiatry</h1>
+    <p class="hero-subtitle">Compassionate mental health care for Colorado Springs - Where healing happens in community</p>
+  </div>
+</section>
+
+<!-- Mission Section -->
+<section class="mission-section">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-content">
+        <h2>Our Mission</h2>
+        <p class="mission-text">
+          We believe that healing happens in a space of genuine compassion and understanding. Our mission is to provide exceptional psychiatric care that honors each person's unique story, supports their journey toward wellness, and empowers them to live with resilience, peace, and hope.
+        </p>
+
+        <h3 style="margin-top: 2rem;">Our Promise to You</h3>
+        <p>
+          We promise to listen with an open heart, to treat you with the respect and dignity you deserve, and to bring both clinical expertise and genuine care to every interaction. Your well-being isn't just our job—it's our genuine commitment. We're here to support your recovery and help you thrive.
+        </p>
+
+        <div class="values-list">
+          <div class="value-item">
+            <h4>Compassion</h4>
+            <p>Genuine care and empathy in every interaction</p>
+          </div>
+          <div class="value-item">
+            <h4>Evidence-Based Care</h4>
+            <p>Proven treatments grounded in latest research</p>
+          </div>
+          <div class="value-item">
+            <h4>Personalization</h4>
+            <p>Treatment tailored to your unique needs and values</p>
+          </div>
+          <div class="value-item">
+            <h4>Partnership</h4>
+            <p>Walking alongside you toward healing and growth</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mission-image">
+        <img src="/mission.png" alt="Our Mission" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Meet Our Team</h2>
+      <p>Dedicated professionals committed to your mental health</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card" *ngFor="let member of teamMembers">
+        <div class="team-card-top">
+          <div class="team-image">
+            <img [src]="member.image" [alt]="member.name" />
+          </div>
+
+          <div class="team-info">
+            <div class="team-card-header">
+              <h3>{{ member.name }}</h3>
+              <p class="team-title">{{ member.title }}</p>
+            </div>
+
+            <div class="team-tags">
+              <span class="tag" *ngFor="let tag of member.tags">{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="team-content">{{ member.content }}</p>
+
+        <div class="team-card-footer">
+          <a *ngIf="member.appointmentLink" [href]="member.appointmentLink" target="_blank" class="btn-appointment">
+            Book an Appointment
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="why-choose-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Choose Circle Psychiatry?</h2>
+      <p>We are dedicated to breaking barriers to mental health access</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h3>Experienced Providers</h3>
+        <p>Our team of psychiatrists and nurse practitioners bring years of clinical expertise and compassion.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h3>Telehealth & In-Person</h3>
+        <p>Flexible appointment options including virtual visits for your convenience.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h3>Safe & Supportive</h3>
+        <p>A judgment-free environment where you feel heard and supported every step of the way.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h3>Personalized Treatment</h3>
+        <p>Each treatment plan is customized to your unique needs, goals, and circumstances.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h3>Community Focused</h3>
+        <p>Proudly serving Colorado Springs and the surrounding community.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h3>Accessible Care</h3>
+        <p>Accept most major insurance plans and offer flexible payment options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Let's Start Your Healing Journey Together"
+  description="Meet our dedicated team and discover why patients trust Circle Psychiatry for compassionate, expert mental health care."
+  primaryButtonText="Reach Out Today"
+  primaryButtonUrl="/contact"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="false">
+</app-cta>

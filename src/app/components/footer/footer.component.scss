@@ -1,0 +1,120 @@
+@import '../../../styles/design-tokens.scss';
+
+.footer {
+  background-color: $primary-purple-dark;
+  color: $neutral-100;
+  padding: $space-16 $space-4;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $space-12 $space-4;
+  }
+}
+
+.footer-container {
+  max-width: 1400px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $space-12;
+  margin-bottom: $space-12;
+
+  @media (max-width: $breakpoint-md) {
+    gap: $space-8;
+    margin-bottom: $space-8;
+  }
+}
+
+.footer-section {
+  h3 {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-4;
+    color: $neutral-white;
+  }
+
+  h4 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $space-4;
+    color: $neutral-white;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: $space-3;
+    }
+
+    a {
+      color: $neutral-300;
+      transition: color $transition-base;
+
+      &:hover {
+        color: $primary-purple-light;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  p {
+    margin-bottom: $space-3;
+    line-height: $line-height-relaxed;
+    color: $neutral-300;
+  }
+}
+
+.footer-tagline {
+  font-size: $font-size-lg;
+  color: $secondary-coral-light;
+  font-weight: $font-weight-medium;
+  margin-bottom: $space-6;
+}
+
+.footer-contact {
+  p {
+    font-size: $font-size-sm;
+
+    strong {
+      color: $neutral-white;
+    }
+
+    a {
+      color: $primary-purple-light;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  border-top: 1px solid $neutral-700;
+  padding-top: $space-8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-4;
+  text-align: center;
+
+  p {
+    margin-bottom: 0;
+    font-size: $font-size-sm;
+    color: $neutral-400;
+  }
+
+  .powered-by {
+    a {
+      color: $secondary-coral-light;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

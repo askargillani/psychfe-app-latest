@@ -1,0 +1,271 @@
+@import '../../../styles/design-tokens.scss';
+
+.hero-section {
+  background: transparent;
+  color: $neutral-900;
+  padding: $space-16 $space-4;
+  text-align: center;
+
+  h1 {
+    color: $neutral-900;
+    font-size: $font-size-6xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-5xl;
+    }
+  }
+
+  .hero-subtitle {
+    color: $neutral-700;
+    font-size: $font-size-xl;
+  }
+}
+
+.services-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-white;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-8;
+}
+
+.service-card {
+  background-color: $neutral-50;
+  border: 2px solid $neutral-200;
+  padding: $space-8;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: $secondary-coral;
+    box-shadow: 0 12px 24px rgba(107, 163, 153, 0.15);
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, $neutral-50 0%, $secondary-coral-light 100%);
+  }
+
+  .service-icon {
+    display: none;
+  }
+
+  h3 {
+    color: $primary-purple-dark;
+    margin-bottom: $space-3;
+  }
+
+  .service-description {
+    color: $neutral-600;
+    margin-bottom: $space-6;
+    flex-grow: 1;
+  }
+
+  h4 {
+    color: $primary-purple-dark;
+    font-size: $font-size-base;
+    margin-bottom: $space-3;
+    margin-top: $space-4;
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: $space-6;
+
+    li {
+      padding-left: $space-6;
+      position: relative;
+      margin-bottom: $space-2;
+      color: $neutral-700;
+      font-size: $font-size-sm;
+
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: $success-green;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+}
+
+.conditions-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-50;
+}
+
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-8;
+}
+
+.condition-card {
+  background-color: $neutral-white;
+  border: 2px solid $neutral-200;
+  padding: $space-8;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: $secondary-coral;
+    box-shadow: 0 12px 24px rgba(107, 163, 153, 0.15);
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, $neutral-white 0%, $secondary-coral-light 100%);
+  }
+
+  .condition-icon {
+    display: none;
+  }
+
+  h3 {
+    color: $secondary-coral-dark;
+    margin-bottom: $space-3;
+  }
+
+  p {
+    color: $neutral-600;
+    margin-bottom: $space-4;
+    flex-grow: 1;
+  }
+
+  .condition-link {
+    color: $primary-purple;
+    font-weight: $font-weight-semibold;
+    transition: all $transition-base;
+
+    &:hover {
+      color: $primary-purple-dark;
+      text-decoration: underline;
+    }
+  }
+}
+
+.insurance-section {
+  background-color: $neutral-50;
+  padding: $space-20 $space-4;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: $space-16;
+
+  h2 {
+    color: $primary-purple-dark;
+    font-size: $font-size-5xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $neutral-600;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-8;
+}
+
+.payment-card {
+  background-color: $neutral-white;
+  padding: $space-8;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+
+  &:hover {
+    box-shadow: 0 12px 24px rgba(155, 111, 168, 0.15);
+    transform: translateY(-6px);
+    border-color: $accent-amber;
+    background: linear-gradient(135deg, $neutral-white 0%, $accent-rose-light 100%);
+  }
+
+  h3 {
+    color: $primary-purple-dark;
+    margin-bottom: $space-3;
+  }
+
+  p {
+    color: $neutral-600;
+    margin-bottom: $space-6;
+    flex-grow: 1;
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+}
+
+.cta-section {
+  background: transparent;
+  color: $neutral-900;
+  padding: $space-20 $space-4;
+  text-align: center;
+}
+
+.cta-content {
+  text-align: center;
+  padding: $space-12 $space-4;
+
+  h2 {
+    color: $neutral-900;
+    font-size: $font-size-5xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  p {
+    color: $neutral-700;
+    font-size: $font-size-lg;
+    margin-bottom: $space-8;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.cta-buttons {
+  display: flex;
+  gap: $space-4;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: $neutral-900;
+    border-color: $neutral-900;
+
+    &:hover {
+      background-color: rgba($neutral-900, 0.05);
+    }
+  }
+}

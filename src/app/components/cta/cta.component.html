@@ -1,0 +1,20 @@
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>{{ heading }}</h2>
+      <p>{{ description }}</p>
+      <div class="cta-buttons">
+        <a *ngIf="isExternalLink" [href]="primaryButtonUrl" target="_blank" class="btn btn-primary btn-lg">
+          {{ primaryButtonText }}
+        </a>
+        <a *ngIf="!isExternalLink" [routerLink]="primaryButtonUrl" class="btn btn-primary btn-lg">
+          {{ primaryButtonText }}
+        </a>
+        <a [routerLink]="secondaryButtonRoute" class="btn btn-outline btn-lg">
+          {{ secondaryButtonText }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

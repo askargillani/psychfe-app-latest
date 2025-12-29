@@ -1,0 +1,67 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>All Inclusive Therapy</h1>
+    <p class="hero-subtitle">Compassionate care that celebrates who you are and validates your unique experience.</p>
+  </div>
+</section>
+
+<!-- What is Inclusive Therapy Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Inclusive Therapy?</h2>
+        <p class="intro-text">
+          At Circle Psychiatry, we aim to provide comprehensive support and acceptance to individuals, regardless of their cultural, ethnic, gender, sexual identity, race, physical ability, age, or other aspects of their identity. This approach emphasizes feeling accepted and understood for who you are, fostering a sense of belonging.
+        </p>
+        <p class="intro-text">
+          Inclusive therapy is integrated with evidence-based treatment to ensure all clients receive culturally sensitive and effective care. We seek to create a welcoming environment for all individuals where you can be authentically yourself while receiving world-class psychiatric support.
+        </p>
+        <p class="intro-text">
+          <strong>Your identity matters, and so does your mental health.</strong> You deserve care providers who understand and celebrate all of who you are.
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/inclusivetherapy.jpg" alt="Inclusive therapy and cultural acceptance" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pillars Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Commitment to Inclusion</h2>
+      <p>We believe that effective mental health care must honor and integrate all aspects of your identity:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let pillar of symptoms">
+        <h3>{{ pillar.title }}</h3>
+        <p>{{ pillar.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Find Your Community Here"
+  description="You deserve mental health care that truly sees and celebrates you. Connect with providers who are committed to inclusive, culturally competent, and affirming care."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

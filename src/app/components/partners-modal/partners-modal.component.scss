@@ -1,0 +1,173 @@
+@import '../../../styles/design-tokens.scss';
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    align-items: flex-end;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: white;
+  border-radius: $radius-xl;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  animation: slideUp 0.3s ease;
+  position: relative;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+    border-radius: $radius-xl $radius-xl 0 0;
+    max-height: 85vh;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-6;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin: 0;
+    font-size: $font-size-xl;
+    color: $neutral-800;
+  }
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: $neutral-600;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $neutral-800;
+  }
+}
+
+.modal-body {
+  padding: $space-6;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    padding: $space-4;
+  }
+}
+
+.partners-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $space-4;
+  width: 100%;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: $space-3;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-2;
+  }
+}
+
+.partner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-4;
+  background: rgba(245, 246, 248, 0.5);
+  border-radius: $radius-lg;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all $transition-base;
+  min-width: 0; // Prevent flex item overflow
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: $space-3;
+  }
+
+  &:hover {
+    background: rgba(245, 246, 248, 1);
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.partner-logo {
+  height: 60px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: $space-3;
+  max-width: 100%;
+
+  @media (max-width: 768px) {
+    height: 50px;
+    margin-bottom: $space-2;
+  }
+}
+
+.partner-name {
+  font-size: $font-size-sm;
+  color: $neutral-700;
+  text-align: center;
+  line-height: 1.4;
+  word-break: break-word;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    font-size: $font-size-xs;
+  }
+}

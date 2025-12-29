@@ -1,0 +1,225 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content container">
+    <div class="hero-text">
+      <h1>You Don't Have to Feel This Way</h1>
+      <p class="hero-subtitle">Compassionate, expert psychiatric care that listens to you and puts you first. You deserve support from providers who truly understand.</p>
+      <div class="hero-actions">
+        <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+          Book an Appointment
+        </a>
+        <a routerLink="/contact" class="btn btn-outline btn-lg">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="/hero.png" alt="Mental health care" class="image-placeholder hero-section-img"/>
+    </div>
+  </div>
+</section>
+
+<!-- Partners Section -->
+<section class="partners-section">
+  <div>
+    <div class="partners-content">
+      <div class="partners-grid">
+        <span class="partners-stat">170M+ individuals are covered by insurance</span>
+        <div class="partner-logo">
+          <img src="https://a.storyblok.com/f/329013/192x120/e608781e62/aetna-logo-1.webp" alt="Aetna"/>
+        </div>
+        <div class="partner-logo">
+          <img src="https://a.storyblok.com/f/329013/161x100/7524f093e1/cigna-logo-1.webp" alt="Cigna"/>
+        </div>
+        <div class="partner-logo">
+          <img src="https://a.storyblok.com/f/329013/193x120/501004dc1d/uhc-logo.webp" alt="United Healthcare"/>
+        </div>
+        <div class="partner-logo">
+          <img src="https://a.storyblok.com/f/329013/273x120/72f4887a43/bluecross-logo.webp" alt="Blue Cross"/>
+        </div>
+        <div class="partner-logo">
+          <img src="https://a.storyblok.com/f/329013/233x120/42bdfb15e1/kaiser-logo.webp" alt="Kaiser"/>
+        </div>
+        <div class="partner-logo">
+          <img src="https://a.storyblok.com/f/329013/159x120/ca7853afb5/umr-logo.webp" alt="UMR"/>
+        </div>
+        <div class="partner-logo">
+          <img src="https://a.storyblok.com/f/329013/114e36aa14/anthem_logo_blue.svg" alt="Anthem"/>
+        </div>
+        <button class="partner-more" (click)="openPartnersModal()">More partners →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners Modal -->
+<app-partners-modal [isOpen]="showPartnersModal" (close)="closePartnersModal()"></app-partners-modal>
+
+<!-- Why Circle Psychiatry Section -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Healing Starts Here</h2>      
+      <p>We believe in treating the whole person with compassion and expertise. Our team combines proven therapies and medication management to create a personalized path to wellness designed just for you.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card" *ngFor="let reason of whyReasons">
+        <h3>{{ reason.title }}</h3>
+        <p>{{ reason.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Conditions We Treat Section -->
+<section class="conditions-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>We're Here for You</h2>
+      <p>Whether you're struggling with depression, anxiety, or managing a complex condition, our compassionate team has the experience and genuine care to help you feel better and reclaim your life.</p>
+    </div>
+
+    <div class="conditions-grid">
+      <div class="condition-card" *ngFor="let condition of conditions">
+        <h3>{{ condition.name }}</h3>
+        <p>{{ condition.description }}</p>
+        <a [routerLink]="['/conditions', condition.id]" class="condition-link">Learn More →</a>
+      </div>
+    </div>
+
+    <div class="conditions-cta">
+      <a routerLink="/conditions" class="btn btn-primary btn-lg">Explore All Conditions</a>
+    </div>
+  </div>
+</section>
+
+<!-- Telehealth Section -->
+<section class="telehealth-section">
+  <div class="container">
+    <div class="telehealth-grid">
+      <div class="telehealth-content">
+        <h2>We Offer Accessible Care</h2>
+        <h3>What is Telehealth?</h3>
+        <p>Telehealth — sometimes called telemedicine — lets you see your healthcare provider for an appointment without going to their office. You can have a telehealth visit online using your computer, tablet, or smartphone.</p>
+
+        <h4 style="margin-top: 2rem;">Benefits of Telehealth:</h4>
+        <ul class="benefits-list">
+          <li>See your provider from the comfort of your home, work, or anywhere convenient</li>
+          <li>Particularly helpful for those with limited mobility and those living in rural areas</li>
+          <li>Saves time — no travel, no time off work, no childcare arrangements needed</li>
+          <li>Get appointments faster and more easily, often at lower cost</li>
+          <li>Access providers who may be far from you</li>
+        </ul>
+
+        <div class="telehealth-actions">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">Book a Telehealth Visit</a>
+          <a routerLink="/services" class="btn btn-outline btn-lg">Explore all Services</a>
+        </div>
+      </div>
+      <div class="telehealth-image">
+        <img src="/telehealth.jpg" alt="Telehealth video call" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Patient Reviews</h2>
+      <p class="reviews-subtitle">All reviews have been submitted by patients after interacting with the practice.</p>
+    </div>
+
+    <!-- Rating Statistics -->
+    <div class="rating-statistics">
+      <div class="rating-stat">
+        <h3>Overall rating</h3>
+        <div class="rating-display">
+          <span class="stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-number">4.91</span>
+        </div>
+      </div>
+      <div class="rating-stat">
+        <h3>Wait time</h3>
+        <div class="rating-display">
+          <span class="stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-number">4.93</span>
+        </div>
+      </div>
+      <div class="rating-stat">
+        <h3>Bedside manner</h3>
+        <div class="rating-display">
+          <span class="stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-number">4.95</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-carousel-full">
+      <button class="carousel-btn carousel-btn-prev" (click)="previousTestimonial()" aria-label="Previous testimonial">
+        &#8249;
+      </button>
+      
+      <div class="carousel-wrapper">
+        <div class="carousel-track" [style.transform]="'translateX(' + getCarouselOffset() + 'px)'">
+          <div class="testimonial-card" *ngFor="let testimonial of testimonials; let i = index" [attr.data-index]="i" (click)="openReviewModal(testimonial)">
+            <div class="testimonial-rating">
+              <span *ngFor="let j of [1, 2, 3, 4, 5]" class="star">⭐</span>
+            </div>
+            <p class="testimonial-text">{{ testimonial.quote }}</p>
+            <div class="testimonial-author">
+              <strong>{{ testimonial.author }}</strong>
+              <span>{{ testimonial.role }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="carousel-btn carousel-btn-next" (click)="nextTestimonial()" aria-label="Next testimonial">
+        &#8250;
+      </button>
+    </div>
+    
+    <div class="carousel-indicators">
+      <button 
+        *ngFor="let testimonial of testimonials; let i = index" 
+        [class.active]="i === currentTestimonialIndex"
+        (click)="goToTestimonial(i)"
+        [attr.aria-label]="'Go to testimonial ' + (i + 1)"
+      ></button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<app-cta 
+  heading="Your Healing Journey Starts Today"
+  description="Taking the first step takes courage. We're here to meet you with compassion, expertise, and genuine care every step of the way. Schedule your appointment—we're ready to support you."
+  primaryButtonText="Book Online"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us Today"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>
+
+<!-- Review Modal -->
+<div class="review-modal-overlay" *ngIf="showReviewModal" (click)="closeReviewModal()">
+  <div class="review-modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close-btn" (click)="closeReviewModal()" aria-label="Close review">
+      ✕
+    </button>
+    <div *ngIf="selectedReview" class="review-modal-body">
+      <div class="review-modal-rating">
+        <span *ngFor="let j of [1, 2, 3, 4, 5]" class="star">⭐</span>
+      </div>
+      <p class="review-modal-text">{{ selectedReview.fullReview || selectedReview.quote }}</p>
+      <div class="review-modal-author">
+        <strong>{{ selectedReview.author }}</strong>
+        <span>{{ selectedReview.role }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Stress Management & Relief</h1>
+    <p class="hero-subtitle">Find balance. Expert strategies to help you manage stress and improve your wellbeing.</p>
+  </div>
+</section>
+
+<!-- What is Stress Management Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Stress Management?</h2>
+        <p class="intro-text">
+          Stress management offers ways to help better deal with stress and difficulty (adversity) in life, leading to a more balanced and healthier life. Stress is an automatic physical, mental, and emotional response to a difficult event.
+        </p>
+        <p class="intro-text">
+          While positive stress can lead to growth, negative, long-term stress can lessen quality of life. Learning effective stress management techniques can significantly improve your physical health, mental wellbeing, and overall quality of life.
+        </p>
+        <p class="intro-text">
+          <strong>Our providers help you develop personalized strategies to manage stress and build resilience for a healthier, more fulfilling life.</strong>
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/stressmanagement.jpg" alt="Stress management and relief" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Symptoms Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Types and Signs of Stress</h2>
+      <p>Stress affects people in different ways. Here are common types and signs of stress:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Build a Healthier Life"
+  description="With expert guidance and evidence-based stress management techniques, you can reduce stress, improve your health, and enhance your overall quality of life."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

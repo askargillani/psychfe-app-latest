@@ -1,0 +1,46 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Wellness & Lifestyle Insights</h1>
+    <p class="hero-subtitle">Expert perspectives, practical tips, and the latest in mental health care</p>
+  </div>
+</section>
+
+<!-- Blog Posts Grid -->
+<section class="blog-section" aria-label="Blog posts">
+  <div class="container">
+    <div class="blog-grid" role="list">
+      <article *ngFor="let post of blogPosts" class="blog-card" role="listitem" [attr.aria-label]="post.title">
+        <div class="blog-image">
+          <img [src]="post.image" [alt]="post.title + ' - ' + post.category" loading="lazy" />
+          <span class="blog-category" aria-label="Category">{{ post.category }}</span>
+        </div>
+
+        <div class="blog-content">
+          <div class="blog-meta" aria-label="Post metadata">
+            <span class="blog-author" itemprop="author">{{ post.author }}</span>
+            <span class="blog-separator" aria-hidden="true">•</span>
+            <time class="blog-date" [attr.datetime]="post.date.toISOString()" itemprop="datePublished">{{ formatDate(post.date) }}</time>
+            <span class="blog-separator" aria-hidden="true">•</span>
+            <span class="blog-read-time">{{ post.readTime }}</span>
+          </div>
+
+          <h2 class="blog-title" itemprop="headline">{{ post.title }}</h2>
+
+          <p class="blog-excerpt" itemprop="description">{{ post.excerpt }}</p>
+
+          <a [routerLink]="['/blog', post.id]" class="read-more-btn" [attr.aria-label]="'Read full article: ' + post.title">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+<!-- CTA Section -->
+<app-cta></app-cta>

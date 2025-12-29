@@ -1,0 +1,71 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Understanding & Managing Panic Attacks</h1>
+    <p class="hero-subtitle">Regain control. Expert care to help you overcome panic attacks and anxiety.</p>
+  </div>
+</section>
+
+<!-- What is Panic Attack Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is a Panic Attack?</h2>
+        <p class="intro-text">
+          A panic attack is a sudden wave of fear and anxiety, often without a real threat, accompanied by physical symptoms like sweating and a racing heartbeat, lasting anywhere from several minutes to an hour.
+        </p>
+        <p class="intro-text">
+          They can occur unexpectedly or be triggered by external stressors. Panic disorder is a common mental health condition estimated to affect nearly 5% of the US population. The good news: panic attacks and panic disorder are highly treatable.
+        </p>
+        <p class="intro-text">
+          <strong>With proper treatment and support, you can learn to manage panic attacks and regain control over your life.</strong>
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/panicattack.jpg" alt="Support for panic attacks" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Symptoms Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of a Panic Attack</h2>
+      <p>Panic attacks involve sudden intense physical and psychological symptoms:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+
+    <div class="symptoms-note">
+      <p><strong>If you're having thoughts of suicide:</strong> Please reach out for help immediately. Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or text HOME to <a href="sms:741741">741741</a> (Crisis Text Line). Both are available 24/7 and completely free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Take Back Control"
+  description="You don't have to live in fear of panic attacks. With evidence-based treatment and compassionate support, you can overcome panic disorder and live confidently."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

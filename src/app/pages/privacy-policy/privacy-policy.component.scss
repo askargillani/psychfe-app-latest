@@ -1,0 +1,138 @@
+@import '../../../styles/design-tokens.scss';
+
+.hero-section {
+  background: transparent;
+  color: $neutral-900;
+  padding: $space-16 $space-4;
+  text-align: center;
+
+  h1 {
+    color: $neutral-900;
+    font-size: $font-size-6xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-5xl;
+    }
+  }
+
+  .hero-subtitle {
+    color: $neutral-700;
+    font-size: $font-size-xl;
+  }
+}
+
+.privacy-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-white;
+}
+
+.privacy-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.privacy-block {
+  margin-bottom: $space-12;
+  padding-bottom: $space-12;
+  border-bottom: 1px solid $neutral-200;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  h2 {
+    color: $primary-purple-dark;
+    font-size: $font-size-2xl;
+    margin-bottom: $space-6;
+    font-weight: $font-weight-semibold;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  h3 {
+    color: $primary-purple-dark;
+    font-size: $font-size-lg;
+    margin-top: $space-6;
+    margin-bottom: $space-3;
+    font-weight: $font-weight-semibold;
+  }
+
+  p {
+    color: $neutral-800;
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    margin-bottom: $space-4;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: $primary-purple;
+    text-decoration: none;
+    font-weight: $font-weight-semibold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.privacy-list {
+  list-style-position: inside;
+  padding: 0;
+  margin: $space-4 0 $space-6 0;
+
+  li {
+    color: $neutral-800;
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    margin-bottom: $space-3;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      font-weight: $font-weight-semibold;
+      color: $primary-purple-dark;
+    }
+  }
+}
+
+.contact-block {
+  background-color: $primary-purple-light;
+  padding: $space-6;
+  border-radius: $radius-lg;
+  margin: $space-4 0;
+
+  p {
+    color: $primary-purple-dark;
+    margin-bottom: $space-3;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    font-weight: $font-weight-semibold;
+  }
+
+  a {
+    color: $primary-purple;
+  }
+}
+
+.policy-date {
+  font-size: $font-size-sm;
+  color: $neutral-600;
+  margin-top: $space-6;
+  font-style: italic;
+}

@@ -1,0 +1,88 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Understanding & Managing Bipolar Disorder</h1>
+    <p class="hero-subtitle">You don't have to navigate this alone. Expert care to help you find stability and thrive.</p>
+  </div>
+</section>
+
+<!-- What is Bipolar Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Bipolar Disorder?</h2>
+        <p class="intro-text">
+          Bipolar disorder, formerly called manic depression, is a mental health condition that causes extreme mood swings. These include emotional highs (mania or hypomania) and lows (depression). Hypomania is less extreme than mania. When you become depressed, you may feel sad or hopeless and lose interest in most activities. When your mood shifts to mania or hypomania, you may feel very excited and happy (euphoric), full of energy, or unusually irritable.
+        </p>
+        <p class="intro-text">
+          These mood swings can affect sleep, energy, activity, judgment, behavior, and the ability to think clearly. Episodes may occur rarely or multiple times a year, with each bout usually lasting several days. Between episodes, some people experience long periods of emotional stability.
+        </p>
+        <p class="intro-text">
+          <strong>The important thing to know: bipolar disorder is manageable.</strong> With the right treatment plan combining medication, therapy, and lifestyle strategies, you can achieve stability and live a fulfilling life.
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/bipolar.jpg" alt="Support and stability in bipolar disorder treatment" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Manic Episode Symptoms -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of a Manic or Hypomanic Episode</h2>
+      <p>During a manic or hypomanic episode, you may experience some or all of these symptoms:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of maniaSymptons">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Depressive Episode Symptoms -->
+<section class="symptoms-section symptoms-section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of a Depressive Episode</h2>
+      <p>During a depressive episode in bipolar disorder, you may experience:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of depressionSymptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+
+    <div class="symptoms-note">
+      <p><strong>If you're having thoughts of suicide:</strong> Please reach out for help immediately. Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or text HOME to <a href="sms:741741">741741</a> (Crisis Text Line). Both are available 24/7 and completely free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Take Control of Your Bipolar Disorder"
+  description="Stability is possible. With expert care and the right support system, you can manage your bipolar disorder and build the life you want. Let us help you find your path to wellness."
+  primaryButtonText="Schedule Your Consultation"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

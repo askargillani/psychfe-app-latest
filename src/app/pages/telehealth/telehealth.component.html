@@ -1,0 +1,57 @@
+<section class="telehealth-section">
+  <div class="container">
+    <h1 class="hero-title">Connect with Our Providers</h1>
+    <p class="hero-subtitle">Schedule your telehealth appointment with one of our licensed mental health professionals</p>
+
+    <div class="providers-grid">
+      <div class="provider-card" *ngFor="let provider of providers">
+        <div class="provider-image">
+          <img [src]="provider.image" [alt]="provider.name" />
+        </div>
+        <div class="provider-content">
+          <h2 class="provider-name">{{ provider.name }}</h2>
+          <p class="provider-credentials">{{ provider.credentials }}</p>
+          <a [href]="provider.teleheathLink" target="_blank" rel="noopener" class="telehealth-link">
+            Schedule Appointment
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="telehealth-info">
+      <div class="info-block">
+        <h3>Why Choose Telehealth?</h3>
+        <ul>
+          <li>Convenient virtual appointments from home</li>
+          <li>Flexible scheduling to fit your lifestyle</li>
+          <li>Same quality care as in-person visits</li>
+          <li>Secure and confidential sessions</li>
+          <li>No travel time required</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h3>How to Get Started</h3>
+        <ol>
+          <li>Click on your preferred provider's "Schedule Appointment" button</li>
+          <li>Complete your intake information on Doxy.me</li>
+          <li>Choose your preferred appointment time</li>
+          <li>Join your session at the scheduled time</li>
+          <li>Ensure you have a private, quiet space for your appointment</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <p><strong>Note:</strong> Telehealth appointments are conducted via secure video conferencing. You will receive login instructions via email before your appointment. For technical support during your session, please have our office phone number ready.</p>
+    </div>
+
+    <app-cta 
+      heading="Ready to Schedule?"
+      description="Start your telehealth journey today by booking an appointment with one of our experienced providers."
+      primaryButtonText="Back to Services"
+      primaryButtonRoute="/services"
+      [isExternalLink]="false">
+    </app-cta>
+  </div>
+</section>

@@ -1,0 +1,140 @@
+@import '../../../styles/design-tokens.scss';
+
+// Hero Section
+.hero-section {
+  background: transparent;
+  color: $neutral-900;
+  padding: $space-16 $space-4;
+  text-align: center;
+
+  h1 {
+    color: $neutral-900;
+    font-size: $font-size-6xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-5xl;
+    }
+  }
+
+  .hero-subtitle {
+    color: $neutral-700;
+    font-size: $font-size-xl;
+  }
+}
+
+// Conditions Section
+.conditions-section {
+  padding: $space-20 $space-4;
+  background-color: $neutral-white;
+}
+
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-8;
+}
+
+.condition-card {
+  background-color: $neutral-white;
+  border: 2px solid $neutral-200;
+  padding: $space-8;
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: $accent-blue;
+    box-shadow: 0 12px 24px rgba(74, 144, 226, 0.15);
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, $neutral-white 0%, $accent-blue-light 100%);
+  }
+
+  h3 {
+    color: $accent-blue-dark;
+    margin-bottom: $space-3;
+  }
+
+  p {
+    color: $neutral-600;
+    margin-bottom: $space-4;
+    flex-grow: 1;
+  }
+
+  .condition-link {
+    color: $accent-blue-dark;
+    font-weight: $font-weight-semibold;
+    transition: all $transition-base;
+
+    &:hover {
+      color: $accent-blue;
+      text-decoration: underline;
+    }
+  }
+}
+
+// CTA Section
+.cta-section {
+  background: transparent;
+  color: $neutral-900;
+  padding: $space-20 $space-4;
+  text-align: center;
+}
+
+.cta-content {
+  text-align: center;
+  padding: $space-12 $space-4;
+
+  h2 {
+    color: $neutral-900;
+    font-size: $font-size-5xl;
+    margin-bottom: $space-4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  p {
+    color: $neutral-700;
+    font-size: $font-size-lg;
+    margin-bottom: $space-8;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.cta-buttons {
+  display: flex;
+  gap: $space-4;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: $neutral-900;
+    border-color: $neutral-900;
+
+    &:hover {
+      background-color: rgba($neutral-900, 0.05);
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .conditions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .condition-card {
+    h3 {
+      font-size: $font-size-xl;
+    }
+  }
+}

@@ -1,0 +1,71 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Understanding & Managing Anxiety Disorders</h1>
+    <p class="hero-subtitle">Reclaim your calm. Evidence-based care to help you manage anxiety and live fully.</p>
+  </div>
+</section>
+
+<!-- What is Anxiety Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Anxiety?</h2>
+        <p class="intro-text">
+          Anxiety disorders involve intense, excessive, and persistent worry and fear about everyday situations, often including repeated episodes of panic attacks. These feelings interfere with daily activities, are difficult to control, and are out of proportion to the actual danger.
+        </p>
+        <p class="intro-text">
+          Triggers can include severe stress, previous trauma, current lifestyle habits, or underlying neurological conditions. The good news: anxiety is highly treatable with the right support and care.
+        </p>
+        <p class="intro-text">
+          <strong>Our providers work to identify your triggers and create a personalized treatment plan to manage symptoms and improve your quality of life.</strong>
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/anxiety.jpg" alt="Support and management for anxiety disorders" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Symptoms Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of Anxiety Disorders</h2>
+      <p>Anxiety can manifest in many different ways. Here are common signs that may indicate an anxiety disorder:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+
+    <div class="symptoms-note">
+      <p><strong>If you're having thoughts of suicide:</strong> Please reach out for help immediately. Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or text HOME to <a href="sms:741741">741741</a> (Crisis Text Line). Both are available 24/7 and completely free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Take Control of Your Anxiety"
+  description="You don't have to live with constant worry and fear. With evidence-based treatment and compassionate care, you can manage your anxiety and rediscover peace and confidence."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

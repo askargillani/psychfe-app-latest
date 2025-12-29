@@ -1,0 +1,71 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Understanding & Managing Mood Disorders</h1>
+    <p class="hero-subtitle">Find balance. Expert care to help you manage mood disorders and reclaim stability.</p>
+  </div>
+</section>
+
+<!-- What is Mood Disorder Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What are Mood Disorders?</h2>
+        <p class="intro-text">
+          Mood disorders, such as depression and bipolar disorder, affect people emotionally and can significantly impact all areas of life. Symptoms may include constantly feeling sad or having extreme mood swings that range from being very sad, empty, or cranky to being very happy.
+        </p>
+        <p class="intro-text">
+          Mood disorders are more common in women and are highly treatable. Getting a comprehensive assessment is the first step toward managing the condition and regaining stability and wellbeing.
+        </p>
+        <p class="intro-text">
+          <strong>With proper treatment, you can achieve emotional stability and build a fulfilling life.</strong>
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/mooddisorder.jpg" alt="Support for mood disorders" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Symptoms Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of Mood Disorders</h2>
+      <p>Mood disorders can present in different ways. Here are common signs:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+
+    <div class="symptoms-note">
+      <p><strong>If you're having thoughts of suicide:</strong> Please reach out for help immediately. Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or text HOME to <a href="sms:741741">741741</a> (Crisis Text Line). Both are available 24/7 and completely free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Regain Your Emotional Balance"
+  description="Mood disorders are manageable. With comprehensive treatment combining therapy, medication management, and lifestyle strategies, you can achieve stability and emotional wellbeing."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>

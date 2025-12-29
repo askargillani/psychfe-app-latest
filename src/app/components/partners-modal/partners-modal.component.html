@@ -1,0 +1,19 @@
+<div class="modal-backdrop" *ngIf="isOpen" (click)="onBackdropClick($event)">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Our Insurance Partners</h2>
+      <button class="modal-close" (click)="onClose()" aria-label="Close modal">
+        ✕
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="partners-list">
+        <div class="partner-item" *ngFor="let partner of partners">
+          <img [src]="partner.logo" [alt]="partner.name" class="partner-logo"/>
+          <span class="partner-name">{{ partner.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

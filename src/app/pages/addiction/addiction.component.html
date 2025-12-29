@@ -1,0 +1,114 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Understanding & Treating Addiction</h1>
+    <p class="hero-subtitle">Recovery is possible. Compassionate care to help you overcome addiction and reclaim your life.</p>
+  </div>
+</section>
+
+<!-- What is Addiction Section -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <h2>What is Addiction?</h2>
+        <p class="intro-text">
+          Addiction is a chronic (lifelong) condition that involves compulsive seeking and taking of a substance or performing an activity despite negative or harmful consequences. Addiction can significantly impact your health, relationships and overall quality of life. It's crucial to seek help as soon as you develop signs of addiction.
+        </p>
+        <div class="intro-cta">
+          <a href="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810" target="_blank" class="btn btn-primary btn-lg">
+            Book an Appointment
+          </a>
+          <a routerLink="/contact" class="btn btn-outline btn-lg">
+            Contact Us
+          </a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img src="/addiction.jpg" alt="Addiction treatment and recovery" class="image-placeholder"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Types of Addiction Section -->
+<section class="addiction-types-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>What are the Types of Addiction?</h2>
+      <p>There are two main groups of addiction:</p>
+    </div>
+
+    <div class="types-intro">
+      <p><strong>1. Substance addictions (substance use disorders)</strong></p>
+      <p><strong>2. Non-substance addictions (behavioral addictions)</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- Substance Addictions Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Substance Addictions</h2>
+      <p>Substances are drugs that have addiction potential. They can be prescription medications or non-medical drugs. While these substances are very different from each other, they all strongly activate the center of your brain and produce feelings of pleasure. Use of these substances can lead to substance use disorders but not always. They can be mild, moderate or severe. Addiction is the most severe form of a substance abuse disorder.</p>
+    </div>
+
+    <div class="addiction-list">
+      <div class="addiction-item" *ngFor="let substance of substanceAddictions">
+        <h3>{{ substance.title }}</h3>
+        <p *ngIf="substance.description">{{ substance.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Behavioral Addictions Section -->
+<section class="symptoms-section symptoms-section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Non-Substance Addictions (Behavioral Addictions)</h2>
+      <p>Behavioral addictions can occur with any activity that's capable of stimulating your brain's system. Any activity or habit that becomes all-consuming and negatively impacts your daily functioning can cause significant mental, social and physical health issues, as well as financial issues in some cases.</p>
+    </div>
+
+    <div class="addiction-list">
+      <div class="addiction-item" *ngFor="let behavior of behavioralAddictions">
+        <h3>{{ behavior.title }}</h3>
+        <p *ngIf="behavior.description">{{ behavior.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Signs Section -->
+<section class="symptoms-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Signs of Addiction</h2>
+      <p>Addiction manifests differently for different people. Here are common signs:</p>
+    </div>
+
+    <div class="symptoms-grid">
+      <div class="symptom-card" *ngFor="let symptom of symptoms">
+        <h3>{{ symptom.title }}</h3>
+        <p>{{ symptom.description }}</p>
+      </div>
+    </div>
+
+    <div class="symptoms-note">
+      <p><strong>If you're having thoughts of suicide:</strong> Please reach out for help immediately. Call or text <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or text HOME to <a href="sms:741741">741741</a> (Crisis Text Line). Both are available 24/7 and completely free.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- CTA Section -->
+<app-cta 
+  heading="Your Recovery Starts Here"
+  description="If you are dealing with addiction we are here to help you. Addiction is treatable. With professional support, personalized treatment plans, and compassionate care, you can overcome addiction and build a healthier, more fulfilling life."
+  primaryButtonText="Schedule Your Appointment"
+  primaryButtonUrl="https://www.zocdoc.com/practice/circle-psychiatry-group-95646?lock=true&isNewPatient=false&referrerType=widget&LocIdent=233810"
+  secondaryButtonText="Contact Us"
+  secondaryButtonRoute="/contact"
+  [isExternalLink]="true">
+</app-cta>
