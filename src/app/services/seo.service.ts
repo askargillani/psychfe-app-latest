@@ -290,9 +290,9 @@ export class SeoService {
   getPageSeoData(pageName: string): SeoData {
     const seoDataMap: { [key: string]: SeoData } = {
       'home': {
-        title: 'Circle Psychiatry - Expert Mental Health Care & Teletherapy in Colorado Springs',
-        description: 'Compassionate mental health care through teletherapy and medication management. Expert treatment for anxiety, depression, ADHD, bipolar disorder, PTSD, and more. Accepting new patients in Colorado Springs.',
-        keywords: 'mental health, teletherapy, psychiatry, anxiety treatment, depression help, ADHD therapy, Colorado Springs psychiatrist, medication management, telehealth mental health',
+        title: 'Circle Psychiatry - Mental Health Care & Teletherapy',
+        description: 'Compassionate mental health care through teletherapy. Expert treatment for anxiety, depression, ADHD, and more.',
+        keywords: 'mental health, teletherapy, psychiatry, anxiety treatment, depression help, ADHD therapy',
         ogType: 'website'
       },
       'about': {
