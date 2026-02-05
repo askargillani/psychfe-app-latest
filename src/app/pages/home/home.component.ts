@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 import { PartnersModalComponent } from '../../components/partners-modal/partners-modal.component';
 
@@ -43,8 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private meta: Meta,
-    private title: Title,
+    private seoService: SeoService,
     private el: ElementRef
   ) {}
 
@@ -156,22 +155,33 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.title.setTitle('Circle Psychiatry - Compassionate Mental Health Care | Teletherapy & Medication Management');
-    this.meta.updateTag({ name: 'description', content: 'Expert mental health care with compassionate providers. Specializing in anxiety, depression, ADHD, mood disorders, and more through secure teletherapy and medication management.' });
-    this.meta.updateTag({ name: 'keywords', content: 'mental health, teletherapy, medication management, anxiety treatment, depression therapy, ADHD care, psychiatric nurse practitioner, online therapy, mental wellness' });
+    // Update SEO tags
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('home'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Circle Psychiatry - Compassionate Mental Health Care' });
-    this.meta.updateTag({ property: 'og:description', content: 'Expert mental health care with compassionate providers specializing in anxiety, depression, ADHD, and more.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/' });
-    this.meta.updateTag({ property: 'og:type', content: 'website' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'Circle Psychiatry - Compassionate Mental Health Care' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Expert mental health care with compassionate providers specializing in anxiety, depression, ADHD, and more.' });
-
-    // Structured Data
-    this.addStructuredData();
+    // Add structured data
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getWebSiteSchema(),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'MedicalBusiness',
+        'name': 'Circle Psychiatry',
+        'description': 'Compassionate mental health care through teletherapy and medication management',
+        'url': 'https://circlepsychiatry.com',
+        'medicalSpecialty': ['Psychiatry', 'Mental Health'],
+        'availableService': [
+          {
+            '@type': 'MedicalTherapy',
+            'name': 'Teletherapy'
+          },
+          {
+            '@type': 'MedicalProcedure',
+            'name': 'Medication Management'
+          }
+        ]
+      }
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
 
     this.startCarousel();
     this.setupScrollAnimations();
@@ -258,38 +268,5 @@ export class HomeComponent implements OnInit, OnDestroy {
         elements.forEach((el: Element) => observer.observe(el));
       }, 100);
     }
-  }
-
-  private addStructuredData() {
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "MedicalBusiness",
-      "name": "Circle Psychiatry",
-      "description": "Compassionate mental health care through teletherapy and medication management",
-      "url": "https://circlepsychiatry.com",
-      "telephone": "+1-XXX-XXX-XXXX",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "US"
-      },
-      "medicalSpecialty": [
-        "Psychiatry",
-        "Mental Health"
-      ],
-      "priceRange": "$$",
-      "availableService": [
-        {
-          "@type": "MedicalTherapy",
-          "name": "Teletherapy"
-        },
-        {
-          "@type": "MedicalProcedure",
-          "name": "Medication Management"
-        }
-      ]
-    });
-    document.head.appendChild(script);
   }
 }

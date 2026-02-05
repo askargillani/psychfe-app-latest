@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -15,7 +16,22 @@ interface Symptom {
   templateUrl: './stress-management.component.html',
   styleUrls: ['./stress-management.component.scss']
 })
-export class StressManagementComponent {
+export class StressManagementComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('stress-management'));
+
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Stress Management', url: '/stress-management' }
+      ])
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
+  }
   symptoms: Symptom[] = [
     {
       title: 'Acute Stress',

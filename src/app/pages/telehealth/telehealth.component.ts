@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface TelehealthProvider {
@@ -18,24 +18,20 @@ interface TelehealthProvider {
   styleUrls: ['./telehealth.component.scss']
 })
 export class TelehealthComponent implements OnInit {
-  constructor(
-    private meta: Meta,
-    private title: Title
-  ) {}
+  constructor(private seoService: SeoService) {}
 
   ngOnInit() {
-    this.title.setTitle('Secure Teletherapy Services - Online Mental Health Care | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Access professional mental health care from home through secure teletherapy. Connect with experienced psychiatric nurse practitioners via private video sessions.' });
-    this.meta.updateTag({ name: 'keywords', content: 'teletherapy, online therapy, virtual mental health, remote psychiatric care, video counseling, telehealth mental health' });
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('telehealth'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Secure Teletherapy Services - Online Mental Health Care | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Access professional mental health care from home through secure teletherapy with experienced providers.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/telehealth' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'Secure Teletherapy Services - Online Mental Health Care | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Access professional mental health care from home through secure teletherapy with experienced providers.' });
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Services', url: '/services' },
+        { name: 'Telehealth', url: '/telehealth' }
+      ])
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   providers: TelehealthProvider[] = [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -18,23 +18,27 @@ interface Symptom {
 })
 export class ADHDComponent implements OnInit {
   constructor(
-    private meta: Meta,
-    private title: Title
+    private seoService: SeoService
   ) {}
 
   ngOnInit() {
-    this.title.setTitle('ADHD Treatment - Focus & Attention Support | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Comprehensive ADHD treatment for adults and children. Expert care for attention deficit, hyperactivity, and impulsivity through medication management and behavioral strategies.' });
-    this.meta.updateTag({ name: 'keywords', content: 'ADHD treatment, ADD therapy, attention deficit disorder, ADHD medication management, adult ADHD, child ADHD, focus problems' });
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('adhd'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'ADHD Treatment - Focus & Attention Support | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Comprehensive ADHD treatment for adults and children with expert medication management and behavioral strategies.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/adhd' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'ADHD Treatment - Focus & Attention Support | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Comprehensive ADHD treatment for adults and children with expert medication management and behavioral strategies.' });
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'ADHD Treatment', url: '/adhd' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'ADHD',
+        description: 'Attention-Deficit/Hyperactivity Disorder (ADHD) affects attention, impulse control, and activity levels.',
+        symptoms: ['Difficulty focusing', 'Hyperactivity', 'Impulsivity', 'Time management issues', 'Emotional dysregulation'],
+        treatments: ['Medication management', 'Behavioral therapy', 'Cognitive training', 'Lifestyle modifications']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   symptoms: Symptom[] = [

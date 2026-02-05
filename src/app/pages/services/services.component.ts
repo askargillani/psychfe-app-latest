@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Service {
@@ -28,23 +28,22 @@ interface Condition {
 })
 export class ServicesComponent implements OnInit {
   constructor(
-    private meta: Meta,
-    private title: Title
+    private seoService: SeoService
   ) {}
 
   ngOnInit() {
-    this.title.setTitle('Our Services - Teletherapy & Medication Management | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Comprehensive mental health services including teletherapy, medication management, stress management, and specialized care for anxiety, depression, ADHD, and more.' });
-    this.meta.updateTag({ name: 'keywords', content: 'teletherapy services, medication management, mental health treatment, online therapy, psychiatric services, stress management' });
+    // Update SEO tags
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('services'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Our Services - Teletherapy & Medication Management | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Comprehensive mental health services including teletherapy, medication management, and specialized care.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/services' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'Our Services - Teletherapy & Medication Management | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Comprehensive mental health services including teletherapy, medication management, and specialized care.' });
+    // Add structured data
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Services', url: '/services' }
+      ])
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   services: Service[] = [

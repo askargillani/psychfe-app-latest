@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface TeamMember {
@@ -22,23 +22,20 @@ interface TeamMember {
 })
 export class AboutComponent implements OnInit {
   constructor(
-    private meta: Meta,
-    private title: Title
+    private seoService: SeoService
   ) {}
 
   ngOnInit() {
-    this.title.setTitle('About Us - Meet Our Mental Health Experts | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Meet our compassionate team of psychiatric mental health nurse practitioners. Expert care in anxiety, depression, ADHD, and medication management through secure teletherapy.' });
-    this.meta.updateTag({ name: 'keywords', content: 'psychiatric nurse practitioner, PMHNP, mental health providers, teletherapy experts, medication management specialists' });
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('about'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'About Us - Meet Our Mental Health Experts | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Meet our compassionate team of psychiatric mental health nurse practitioners providing expert mental health care.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/about' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'About Us - Meet Our Mental Health Experts | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Meet our compassionate team of psychiatric mental health nurse practitioners providing expert mental health care.' });
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'About Us', url: '/about' }
+      ])
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   teamMembers: TeamMember[] = [

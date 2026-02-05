@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Condition {
@@ -19,24 +19,19 @@ interface Condition {
   styleUrls: ['./conditions.component.scss']
 })
 export class ConditionsComponent implements OnInit {
-  constructor(
-    private meta: Meta,
-    private title: Title
-  ) {}
+  constructor(private seoService: SeoService) {}
 
   ngOnInit() {
-    this.title.setTitle('Mental Health Conditions We Treat | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Expert treatment for anxiety, depression, ADHD, bipolar disorder, PTSD, eating disorders, insomnia, and more. Compassionate, evidence-based mental health care.' });
-    this.meta.updateTag({ name: 'keywords', content: 'anxiety treatment, depression therapy, ADHD care, bipolar disorder, PTSD treatment, eating disorders, insomnia help, panic attacks, mood disorders, trauma therapy' });
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('conditions'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Mental Health Conditions We Treat | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Expert treatment for anxiety, depression, ADHD, bipolar disorder, PTSD, and more through compassionate mental health care.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/conditions' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'Mental Health Conditions We Treat | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Expert treatment for anxiety, depression, ADHD, bipolar disorder, PTSD, and more through compassionate mental health care.' });
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' }
+      ])
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   conditions: Condition[] = [

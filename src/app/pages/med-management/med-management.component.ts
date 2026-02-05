@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -17,24 +17,20 @@ interface Symptom {
   styleUrls: ['./med-management.component.scss']
 })
 export class MedManagementComponent implements OnInit {
-  constructor(
-    private meta: Meta,
-    private title: Title
-  ) {}
+  constructor(private seoService: SeoService) {}
 
   ngOnInit() {
-    this.title.setTitle('Psychiatric Medication Management - Expert Care | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Professional psychiatric medication management with comprehensive evaluation, prescription oversight, and regular monitoring. Expert care for mental health medications.' });
-    this.meta.updateTag({ name: 'keywords', content: 'medication management, psychiatric medications, prescription management, medication monitoring, psychiatric care, mental health medications' });
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('med-management'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Psychiatric Medication Management - Expert Care | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Professional psychiatric medication management with comprehensive evaluation and regular monitoring.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/med-management' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'Psychiatric Medication Management - Expert Care | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Professional psychiatric medication management with comprehensive evaluation and regular monitoring.' });
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Services', url: '/services' },
+        { name: 'Medication Management', url: '/med-management' }
+      ])
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   symptoms: Symptom[] = [

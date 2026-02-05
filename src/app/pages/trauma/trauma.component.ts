@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -15,7 +16,28 @@ interface Symptom {
   templateUrl: './trauma.component.html',
   styleUrls: ['./trauma.component.scss']
 })
-export class TraumaComponent {
+export class TraumaComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('trauma'));
+
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Trauma/PTSD', url: '/trauma' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Post-Traumatic Stress Disorder (PTSD)',
+        description: 'PTSD is a mental health condition triggered by experiencing or witnessing a traumatic event, characterized by flashbacks, nightmares, severe anxiety, and uncontrollable thoughts.',
+        symptoms: this.symptoms.map(s => s.title),
+        treatments: ['Cognitive Behavioral Therapy', 'EMDR Therapy', 'Exposure Therapy', 'Medication Management', 'Group Therapy']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
+  }
   symptoms: Symptom[] = [
     {
       title: 'Flashbacks',

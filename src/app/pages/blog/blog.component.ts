@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface BlogPost {
@@ -24,35 +24,19 @@ interface BlogPost {
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  constructor(
-    private titleService: Title,
-    private metaService: Meta
-  ) {}
+  constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
-    // Set page title and meta tags for SEO
-    this.titleService.setTitle('Mental Health Blog | Circle Psychiatry Colorado Springs');
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('blog'));
 
-    this.metaService.updateTag({
-      name: 'description',
-      content: 'Expert mental health insights, practical tips, and the latest in psychiatric care. Read about depression, anxiety, ADHD, suicide prevention, and more from Circle Psychiatry in Colorado Springs.'
-    });
-
-    this.metaService.updateTag({
-      name: 'keywords',
-      content: 'mental health blog, psychiatry articles, depression awareness, ADHD information, suicide prevention, mens mental health, child mental health, Colorado Springs psychiatrist'
-    });
-
-    // Open Graph tags for social sharing
-    this.metaService.updateTag({ property: 'og:title', content: 'Mental Health Blog | Circle Psychiatry' });
-    this.metaService.updateTag({ property: 'og:description', content: 'Expert perspectives, practical tips, and the latest in mental health care from Circle Psychiatry.' });
-    this.metaService.updateTag({ property: 'og:type', content: 'website' });
-    this.metaService.updateTag({ property: 'og:url', content: 'https://circlepsych.com/blog' });
-
-    // Twitter Card tags
-    this.metaService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    this.metaService.updateTag({ name: 'twitter:title', content: 'Mental Health Blog | Circle Psychiatry' });
-    this.metaService.updateTag({ name: 'twitter:description', content: 'Expert perspectives, practical tips, and the latest in mental health care.' });
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Blog', url: '/blog' }
+      ])
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   blogPosts: BlogPost[] = [

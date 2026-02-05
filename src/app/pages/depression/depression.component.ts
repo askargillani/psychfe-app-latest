@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Resource {
@@ -24,23 +24,27 @@ interface Symptom {
 })
 export class DepressionComponent implements OnInit {
   constructor(
-    private meta: Meta,
-    private title: Title
+    private seoService: SeoService
   ) {}
 
   ngOnInit() {
-    this.title.setTitle('Depression Treatment - Professional Mental Health Care | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Expert depression treatment combining therapy and medication management. Get help for persistent sadness, loss of interest, and depressive symptoms with compassionate support.' });
-    this.meta.updateTag({ name: 'keywords', content: 'depression treatment, major depressive disorder, depression therapy, antidepressant medication, mood disorder treatment, clinical depression help' });
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('depression'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Depression Treatment - Professional Mental Health Care | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Expert depression treatment combining therapy and medication management with compassionate providers.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/depression' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'Depression Treatment - Professional Mental Health Care | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Expert depression treatment combining therapy and medication management with compassionate providers.' });
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Depression Treatment', url: '/depression' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Depression',
+        description: 'Major depressive disorder is characterized by persistent sadness and loss of interest in activities.',
+        symptoms: ['Persistent sadness', 'Loss of interest', 'Sleep changes', 'Energy fatigue', 'Changes in appetite'],
+        treatments: ['Psychotherapy', 'Medication management', 'Cognitive behavioral therapy', 'Lifestyle changes']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   symptoms: Symptom[] = [

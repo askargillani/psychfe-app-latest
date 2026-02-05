@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -15,7 +16,28 @@ interface Symptom {
   templateUrl: './eating-disorders.component.html',
   styleUrls: ['./eating-disorders.component.scss']
 })
-export class EatingDisordersComponent {
+export class EatingDisordersComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('eating-disorders'));
+
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Eating Disorders', url: '/eating-disorders' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Eating Disorders',
+        description: 'Eating disorders involve severe disturbances in eating behaviors and related thoughts and emotions, including anorexia, bulimia, and binge eating disorder.',
+        symptoms: this.symptoms.map(s => s.title),
+        treatments: ['Cognitive Behavioral Therapy', 'Nutritional Counseling', 'Medication Management', 'Family-Based Therapy', 'Group Therapy']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
+  }
   symptoms: Symptom[] = [
     {
       title: 'Severe Dietary Restriction',

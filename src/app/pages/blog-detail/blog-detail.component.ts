@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface BlogPost {
@@ -35,8 +35,7 @@ export class BlogDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private titleService: Title,
-    private metaService: Meta
+    private seoService: SeoService
   ) {}
 
   private blogPosts: BlogPost[] = [
@@ -505,79 +504,49 @@ export class BlogDetailComponent implements OnInit {
 
       if (this.post) {
         // Set dynamic SEO meta tags based on blog post
-        this.titleService.setTitle(`${this.post.title} | Circle Psychiatry Blog`);
-
-        this.metaService.updateTag({
-          name: 'description',
-          content: this.post.excerpt
+        this.seoService.updateSeoTags({
+          title: `${this.post.title} | Circle Psychiatry Blog`,
+          description: this.post.excerpt,
+          keywords: `${this.post.category}, mental health, Circle Psychiatry, Colorado Springs, ${this.post.title}`,
+          author: this.post.author,
+          publishedTime: this.post.date.toISOString(),
+          modifiedTime: this.post.date.toISOString(),
+          ogType: 'article',
+          ogImage: `https://circlepsychiatry.com${this.post.image}`,
+          ogUrl: `https://circlepsychiatry.com/blog/${this.post.id}`
         });
 
-        this.metaService.updateTag({
-          name: 'keywords',
-          content: `${this.post.category}, mental health, Circle Psychiatry, Colorado Springs, ${this.post.title}`
-        });
+        // Add structured data including Article, Organization, and Breadcrumb schemas
+        const schemas = [
+          this.seoService.getOrganizationSchema(),
+          this.seoService.getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Blog', url: '/blog' },
+            { name: this.post.title, url: `/blog/${this.post.id}` }
+          ]),
+          this.seoService.getArticleSchema({
+            title: this.post.title,
+            description: this.post.excerpt,
+            image: `https://circlepsychiatry.com${this.post.image}`,
+            datePublished: this.post.date.toISOString(),
+            dateModified: this.post.date.toISOString(),
+            author: this.post.author
+          })
+        ];
 
-        this.metaService.updateTag({ name: 'author', content: this.post.author });
-        this.metaService.updateTag({ name: 'article:published_time', content: this.post.date.toISOString() });
-        this.metaService.updateTag({ name: 'article:author', content: this.post.author });
-
-        // Open Graph tags
-        this.metaService.updateTag({ property: 'og:title', content: this.post.title });
-        this.metaService.updateTag({ property: 'og:description', content: this.post.excerpt });
-        this.metaService.updateTag({ property: 'og:type', content: 'article' });
-        this.metaService.updateTag({ property: 'og:url', content: `https://circlepsych.com/blog/${this.post.id}` });
-        this.metaService.updateTag({ property: 'og:image', content: `https://circlepsych.com${this.post.image}` });
-
-        // Twitter Card tags
-        this.metaService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-        this.metaService.updateTag({ name: 'twitter:title', content: this.post.title });
-        this.metaService.updateTag({ name: 'twitter:description', content: this.post.excerpt });
-        this.metaService.updateTag({ name: 'twitter:image', content: `https://circlepsych.com${this.post.image}` });
-
-        // Add JSON-LD structured data for better SEO
-        this.addStructuredData();
-      }
-    }
-  }
-
-  addStructuredData(): void {
-    if (!this.post) return;
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: this.post.title,
-      description: this.post.excerpt,
-      image: `https://circlepsych.com${this.post.image}`,
-      author: {
-        '@type': 'Person',
-        name: this.post.author
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Circle Psychiatry',
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://circlepsych.com/logo.png'
+        // Add FAQ schema if FAQs exist
+        if (this.post.faqs && this.post.faqs.length > 0) {
+          schemas.push(this.seoService.getFaqSchema(
+            this.post.faqs.map(faq => ({
+              question: faq.question,
+              answer: faq.answer
+            }))
+          ));
         }
-      },
-      datePublished: this.post.date.toISOString(),
-      dateModified: this.post.date.toISOString(),
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': `https://circlepsych.com/blog/${this.post.id}`
+
+        this.seoService.addMultipleStructuredData(schemas);
       }
-    });
-
-    // Remove any existing structured data script
-    const existingScript = document.querySelector('script[type="application/ld+json"]');
-    if (existingScript) {
-      existingScript.remove();
     }
-
-    document.head.appendChild(script);
   }
 
   formatDate(date: Date): string {

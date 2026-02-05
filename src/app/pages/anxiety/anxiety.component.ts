@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -18,23 +18,29 @@ interface Symptom {
 })
 export class AnxietyComponent implements OnInit {
   constructor(
-    private meta: Meta,
-    private title: Title
+    private seoService: SeoService
   ) {}
 
   ngOnInit() {
-    this.title.setTitle('Anxiety Disorder Treatment - Expert Care & Support | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Professional anxiety disorder treatment through teletherapy and medication management. Get help for excessive worry, panic attacks, and anxiety symptoms with compassionate care.' });
-    this.meta.updateTag({ name: 'keywords', content: 'anxiety treatment, anxiety disorder therapy, panic attack help, GAD treatment, social anxiety, anxiety medication management' });
+    // Update SEO tags
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('anxiety'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Anxiety Disorder Treatment - Expert Care & Support | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Professional anxiety disorder treatment through teletherapy and medication management with compassionate providers.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/anxiety' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'Anxiety Disorder Treatment - Expert Care & Support | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Professional anxiety disorder treatment through teletherapy and medication management with compassionate providers.' });
+    // Add structured data
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Anxiety Treatment', url: '/anxiety' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Anxiety Disorder',
+        description: 'Anxiety disorders involve excessive worry, fear, or nervousness that interferes with daily life.',
+        symptoms: ['Excessive worry', 'Physical symptoms', 'Sleep disturbances', 'Panic attacks', 'Avoidance behaviors'],
+        treatments: ['Teletherapy', 'Medication management', 'Cognitive behavioral therapy', 'Stress management']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   symptoms: Symptom[] = [

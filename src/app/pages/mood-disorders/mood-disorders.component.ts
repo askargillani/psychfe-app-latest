@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -15,7 +16,28 @@ interface Symptom {
   templateUrl: './mood-disorders.component.html',
   styleUrls: ['./mood-disorders.component.scss']
 })
-export class MoodDisordersComponent {
+export class MoodDisordersComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('mood-disorders'));
+
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Mood Disorders', url: '/mood-disorders' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Mood Disorders',
+        description: 'Mood disorders involve persistent disturbances in mood that affect daily functioning, including major depression, bipolar disorder, and persistent depressive disorder.',
+        symptoms: this.symptoms.map(s => s.title),
+        treatments: ['Cognitive Behavioral Therapy', 'Medication Management', 'Interpersonal Therapy', 'Mood Stabilizers', 'Psychoeducation']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
+  }
   symptoms: Symptom[] = [
     {
       title: 'Persistent Sadness',

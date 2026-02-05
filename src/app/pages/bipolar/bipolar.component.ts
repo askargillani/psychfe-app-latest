@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -23,23 +23,27 @@ interface Resource {
 })
 export class BipolarComponent implements OnInit {
   constructor(
-    private meta: Meta,
-    private title: Title
+    private seoService: SeoService
   ) {}
 
   ngOnInit() {
-    this.title.setTitle('Bipolar Disorder Treatment - Mood Stabilization Care | Circle Psychiatry');
-    this.meta.updateTag({ name: 'description', content: 'Comprehensive bipolar disorder treatment combining medication management and therapy. Expert care for mood swings, mania, and depressive episodes with compassionate support.' });
-    this.meta.updateTag({ name: 'keywords', content: 'bipolar disorder treatment, bipolar therapy, mood stabilization, mania treatment, bipolar depression, mood disorder care' });
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('bipolar'));
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Bipolar Disorder Treatment - Mood Stabilization Care | Circle Psychiatry' });
-    this.meta.updateTag({ property: 'og:description', content: 'Comprehensive bipolar disorder treatment combining medication management and therapy for mood stabilization.' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://circlepsychiatry.com/bipolar' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:title', content: 'Bipolar Disorder Treatment - Mood Stabilization Care | Circle Psychiatry' });
-    this.meta.updateTag({ name: 'twitter:description', content: 'Comprehensive bipolar disorder treatment combining medication management and therapy for mood stabilization.' });
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Bipolar Treatment', url: '/bipolar' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Bipolar Disorder',
+        description: 'Bipolar disorder causes unusual shifts in mood, energy, and activity levels affecting daily functioning.',
+        symptoms: ['Extreme mood swings', 'Manic episodes', 'Depressive episodes', 'Energy changes', 'Sleep disturbances'],
+        treatments: ['Mood stabilizers', 'Psychotherapy', 'Medication management', 'Lifestyle management']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
   }
 
   maniaSymptons: Symptom[] = [

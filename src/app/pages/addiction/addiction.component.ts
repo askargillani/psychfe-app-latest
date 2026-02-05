@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -20,7 +21,28 @@ interface AddictionType {
   templateUrl: './addiction.component.html',
   styleUrls: ['./addiction.component.scss']
 })
-export class AddictionComponent {
+export class AddictionComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('addiction'));
+
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Addiction', url: '/addiction' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Addiction and Substance Use Disorder',
+        description: 'Addiction involves loss of control over substance use or behaviors despite harmful consequences, including tolerance, withdrawal, and continued use despite harm.',
+        symptoms: this.symptoms.map(s => s.title),
+        treatments: ['Cognitive Behavioral Therapy', 'Medication-Assisted Treatment', 'Support Groups', 'Individual Counseling', 'Family Therapy']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
+  }
   symptoms: Symptom[] = [
     {
       title: 'Loss of Control',

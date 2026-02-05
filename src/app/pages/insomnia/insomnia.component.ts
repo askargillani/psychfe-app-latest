@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -15,7 +16,28 @@ interface Symptom {
   templateUrl: './insomnia.component.html',
   styleUrls: ['./insomnia.component.scss']
 })
-export class InsomniaComponent {
+export class InsomniaComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('insomnia'));
+
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Insomnia', url: '/insomnia' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Insomnia',
+        description: 'Insomnia is a sleep disorder characterized by difficulty falling asleep, staying asleep, or waking too early, resulting in daytime fatigue and impairment.',
+        symptoms: this.symptoms.map(s => s.title),
+        treatments: ['Cognitive Behavioral Therapy for Insomnia (CBT-I)', 'Sleep Hygiene Education', 'Medication Management', 'Relaxation Techniques', 'Stimulus Control']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
+  }
   symptoms: Symptom[] = [
     {
       title: 'Difficulty Falling Asleep',

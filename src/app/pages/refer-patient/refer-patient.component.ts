@@ -1,7 +1,8 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 @Component({
@@ -11,8 +12,22 @@ import { CtaComponent } from '../../components/cta/cta.component';
   templateUrl: './refer-patient.component.html',
   styleUrls: ['./refer-patient.component.scss']
 })
-export class ReferPatientComponent {
+export class ReferPatientComponent implements OnInit {
   private http = inject(HttpClient);
+  private seoService = inject(SeoService);
+
+  ngOnInit(): void {
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('refer-patient'));
+
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Refer a Patient', url: '/refer-patient' }
+      ])
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
+  }
 
   showValidationErrors = false;
   validationErrors: { [key: string]: string } = {};

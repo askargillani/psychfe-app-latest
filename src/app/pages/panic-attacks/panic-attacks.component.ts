@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import { CtaComponent } from '../../components/cta/cta.component';
 
 interface Symptom {
@@ -15,7 +16,28 @@ interface Symptom {
   templateUrl: './panic-attacks.component.html',
   styleUrls: ['./panic-attacks.component.scss']
 })
-export class PanicAttacksComponent {
+export class PanicAttacksComponent implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit(): void {
+    this.seoService.updateSeoTags(this.seoService.getPageSeoData('panic-attacks'));
+
+    const schemas = [
+      this.seoService.getOrganizationSchema(),
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Conditions', url: '/conditions' },
+        { name: 'Panic Attacks', url: '/panic-attacks' }
+      ]),
+      this.seoService.getMedicalConditionSchema({
+        name: 'Panic Disorder',
+        description: 'Panic disorder involves recurrent, unexpected panic attacks characterized by sudden intense fear and physical symptoms such as racing heart, sweating, and shortness of breath.',
+        symptoms: this.symptoms.map(s => s.title),
+        treatments: ['Cognitive Behavioral Therapy', 'Exposure Therapy', 'Panic-Focused Psychodynamic Therapy', 'Medication Management', 'Relaxation Techniques']
+      })
+    ];
+    this.seoService.addMultipleStructuredData(schemas);
+  }
   symptoms: Symptom[] = [
     {
       title: 'Sudden Intense Fear',
