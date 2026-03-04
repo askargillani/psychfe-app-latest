@@ -23,7 +23,7 @@ interface NavItem {
 export class HeaderComponent implements OnInit {
   navItems: NavItem[] = [
     { label: 'Home', href: '/', children: [] },
-    { label: 'About', href: '/about', children: [] },
+    { label: 'Team', href: '/about', children: [] },
     {
       label: 'Services',
       href: '/services',

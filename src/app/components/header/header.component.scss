@@ -109,7 +109,7 @@ $transition-medium: $transition-base;
   padding: 0.75rem 1rem;
   color: $text-primary;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: $font-size-lg;
   font-weight: 500;
   border-radius: 6px;
   @include smooth-transition;
@@ -190,7 +190,7 @@ $transition-medium: $transition-base;
   padding: 0.75rem 1rem;
   color: $text-primary;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: $font-size-base;
   border-radius: 6px;
   @include smooth-transition;
   display: flex;
@@ -227,7 +227,7 @@ $transition-medium: $transition-base;
   background-color: $primary-purple;
   color: $neutral-white;
   text-decoration: none;
-  font-size: $font-size-base;
+  font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
   @include smooth-transition;
   display: inline-flex;
@@ -256,7 +256,7 @@ $transition-medium: $transition-base;
 
   @media (max-width: 768px) {
     padding: $space-2 $space-4;
-    font-size: $font-size-sm;
+    font-size: $font-size-base;
   }
 }
 
@@ -430,7 +430,7 @@ $transition-medium: $transition-base;
 
   .nav-link {
     padding: 0.625rem 0.75rem;
-    font-size: 0.9rem;
+    font-size: $font-size-base;
   }
 }
 
