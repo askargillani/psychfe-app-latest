@@ -23,9 +23,9 @@ export interface SeoData {
   providedIn: 'root'
 })
 export class SeoService {
-  private defaultImage = 'https://circle-psyche.vercel.app/hero.png';
+  private defaultImage = 'https://circlepsych.io/Mountains.png';
   private defaultAuthor = 'Circle Psychiatry';
-  private baseUrl = 'https://circle-psyche.vercel.app';
+  private baseUrl = 'https://circlepsych.io';
 
   constructor(
     private meta: Meta,
