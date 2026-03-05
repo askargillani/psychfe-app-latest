@@ -38,37 +38,37 @@ export class TelehealthComponent implements OnInit {
     {
       name: 'Mary Sturgis',
       credentials: 'PMHNP-BC',
-      image: '/MARY-STURGIS.jpg',
+      image: '/assets/MARY-STURGIS.jpg',
       teleheathLink: 'https://circlepsych.doxy.me/marysturgis'
     },
     {
       name: 'Autumn Knox',
       credentials: 'PMHNP-BC',
-      image: '/Autumn-knox.jpg',
+      image: '/assets/Autumn-knox.jpg',
       teleheathLink: 'https://circlepsych.doxy.me/autumnknox'
     },
     {
       name: 'Alex Theisen',
       credentials: 'LPCC',
-      image: '/alex-thiesen.jpg',
+      image: '/assets/alex-thiesen.jpg',
       teleheathLink: 'https://circlepsych.doxy.me/alex'
     },
     {
       name: 'Paul Folk',
       credentials: 'PMHNP-BC',
-      image: '/Paul-Folk.jpg',
+      image: '/assets/Paul-Folk.jpg',
       teleheathLink: 'https://circlepsych.doxy.me/paulfolk'
     },
     {
       name: 'Lauren Hood',
       credentials: 'PMHNP-BC',
-      image: '/Lauren-Hood.jpg',
+      image: '/assets/Lauren-Hood.jpg',
       teleheathLink: 'https://circlepsych.doxy.me/laurenhood'
     },
     {
       name: 'Dean Gainey',
       credentials: 'DNP, PMHNP-BC',
-      image: '/Dean-Gainey.jpg',
+      image: '/assets/Dean-Gainey.jpg',
       teleheathLink: 'https://circlepsych.doxy.me/deangainey'
     }
   ];

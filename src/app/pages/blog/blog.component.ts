@@ -48,7 +48,7 @@ export class BlogComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-11-15'),
       category: 'Mental Health',
-      image: '/mens-health-awareness.jpg',
+      image: '/assets/mens-health-awareness.jpg',
       readTime: '8 min read'
     },
     {
@@ -59,7 +59,7 @@ export class BlogComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-11-20'),
       category: 'Mental Health',
-      image: '/childhood-mental-health-awareness.jpg',
+      image: '/assets/childhood-mental-health-awareness.jpg',
       readTime: '7 min read'
     },
     {
@@ -70,7 +70,7 @@ export class BlogComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-10-15'),
       category: 'Mental Health',
-      image: '/depression-awareness.jpg',
+      image: '/assets/depression-awareness.jpg',
       readTime: '7 min read'
     },
     {
@@ -81,7 +81,7 @@ export class BlogComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-10-10'),
       category: 'Mental Health',
-      image: '/adhd-awareness.jpg',
+      image: '/assets/adhd-awareness.jpg',
       readTime: '8 min read'
     },
     {
@@ -92,7 +92,7 @@ export class BlogComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-09-15'),
       category: 'Mental Health',
-      image: '/suicide-prevention.jpg',
+      image: '/assets/suicide-prevention.jpg',
       readTime: '8 min read'
     }
   ];

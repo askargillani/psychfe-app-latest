@@ -46,7 +46,7 @@ export class BlogDetailComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-11-15'),
       category: 'Mental Health',
-      image: '/mens-health-awareness.jpg',
+      image: '/assets/mens-health-awareness.jpg',
       readTime: '8 min read',
       content: `
         <p>Every November, Movember turns mustaches into a conversation starter for a serious cause: men's mental health. Behind the facial hair and fundraising are real struggles, like higher rates of suicide, reluctance to seek help, and social expectations that keep men from asking for support. Movember is a visible nudge to change that script. This post explains what makes men's mental health unique, how to notice warning signs, practical ways to reach out, and how Circle Psych supports men and families with accessible, evidence-based care.</p>
@@ -150,7 +150,7 @@ export class BlogDetailComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-11-20'),
       category: 'Mental Health',
-      image: '/childhood-mental-health-awareness.jpg',
+      image: '/assets/childhood-mental-health-awareness.jpg',
       readTime: '7 min read',
       content: `
         <p>Early Childhood Mental Health Awareness Month highlights a simple yet profound truth: the first few years truly matter. The relationships, environments, and experiences children receive from birth through early childhood lay the foundation for emotional regulation, learning, and social skills. Parents, caregivers, and clinicians all play a crucial role in identifying early concerns and connecting families to necessary support. This guide explains why early years matter, what healthy emotional development looks like, practical ways to support young children, and when to reach out for professional help.</p>
@@ -235,7 +235,7 @@ export class BlogDetailComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-10-15'),
       category: 'Mental Health',
-      image: '/depression-awareness.jpg',
+      image: '/assets/depression-awareness.jpg',
       readTime: '7 min read',
       content: `
         <p>Depression is more than a passing low mood. It is a common, treatable medical condition that affects thinking, motivation, sleep, appetite, and relationships. Depression Awareness Month is a reminder that symptoms deserve attention, help exists, and asking for support is a sign of strength.</p>
@@ -327,7 +327,7 @@ export class BlogDetailComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-10-10'),
       category: 'Mental Health',
-      image: '/adhd-awareness.jpg',
+      image: '/assets/adhd-awareness.jpg',
       readTime: '8 min read',
       content: `
         <p>ADHD Awareness Month in October is a chance to clear up myths, spotlight real experiences, and remind people that attention-deficit/hyperactivity disorder shows up differently across age ranges and lives. Whether you're an adult who's always wondered why your mind races at meetings, a parent noticing a child struggling in class, or someone newly diagnosed, understanding ADHD is the first step toward practical support. Circle Psychiatry provides evaluation, therapy, and medication management in person and by telehealth, and this month is a good time to learn which options might help you or someone you love thrive.</p>
@@ -412,7 +412,7 @@ export class BlogDetailComponent implements OnInit {
       author: 'Circle Psych Team',
       date: new Date('2024-09-15'),
       category: 'Mental Health',
-      image: '/suicide-prevention.jpg',
+      image: '/assets/suicide-prevention.jpg',
       readTime: '8 min read',
       content: `
         <p>September holds two powerful reminders: National Suicide Prevention Month and National Recovery Month. Both focus on hope, connection, and the practical supports that help people survive, heal, and build lives worth living. At Circle Psychiatry (Circle Psych) in Colorado Springs, clinicians spend every day helping people manage depression, addiction, anxiety, trauma, and other conditions that can increase suicide risk or complicate recovery. This month is an invitation to learn, to reach out, and to normalize asking for help.</p>

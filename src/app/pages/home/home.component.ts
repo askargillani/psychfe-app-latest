@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectorRef, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -32,7 +32,7 @@ interface Testimonial {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   currentTestimonialIndex = 0;
   carouselInterval: any;
   readonly CAROUSEL_INTERVAL = 5000;
@@ -161,6 +161,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.seoService.addMultipleStructuredData(schemas);
 
     this.startCarousel();
+    // scroll animations moved to ngAfterViewInit
+  }
+
+  ngAfterViewInit() {
     this.setupScrollAnimations();
   }
 
@@ -311,12 +315,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
       }, observerOptions);
 
-      setTimeout(() => {
-        const elements = this.el.nativeElement.querySelectorAll(
-          '.reveal-section, .authority-card, .condition-card, .step-card, .testimonial-card'
-        );
-        elements.forEach((el: Element) => observer.observe(el));
-      }, 100);
+      const elements = this.el.nativeElement.querySelectorAll(
+        '.reveal-section, .authority-card, .condition-card, .step-card, .testimonial-card'
+      );
+      elements.forEach((el: Element) => observer.observe(el));
     }
   }
 }

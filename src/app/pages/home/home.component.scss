@@ -68,24 +68,23 @@
 // ─── HERO ────────────────────────────────────────────────────────────────────
 .hero {
   background-color: #f5eef8;
-  background-image: url('/public/Mountains.png');
+  background-image: url('/assets/Mountains.png');
   background-repeat: no-repeat;
   background-position: left center;
-  background-size: 55% auto;
-  padding: 7rem $space-4 6rem $space-4;
+  background-size: 55% 100%;
+  padding: 5rem $space-4 5rem $space-4;
   min-height: 680px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   position: relative;
-  overflow: hidden;
 
   @media (max-width: $breakpoint-md) {
     padding: 5rem $space-4 4rem;
     min-height: unset;
     justify-content: center;
     background-position: center bottom;
-    background-size: 100% auto;
+    background-size: 100% 50%;
   }
 
   .hero-content {
@@ -104,34 +103,34 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: $radius-xl;
-  padding: $space-10;
+  padding: $space-8;
   box-shadow: 0 8px 40px rgba(84,22,182,0.10), inset 0 1px 0 rgba(255,255,255,0.7);
 
-  @media (max-width: $breakpoint-lg) { max-width: 460px; padding: $space-8; }
-  @media (max-width: $breakpoint-md) { max-width: 95%; padding: $space-6; }
+  @media (max-width: $breakpoint-lg) { max-width: 460px; padding: $space-6; }
+  @media (max-width: $breakpoint-md) { max-width: 95%; padding: $space-5; }
 
   h1 {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-size: clamp(1.85rem, 4vw, 3rem);
     font-weight: $font-weight-extrabold;
     color: $neutral-900;
     line-height: 1.15;
     letter-spacing: -0.5px;
-    margin-bottom: $space-4;
+    margin-bottom: $space-3;
   }
 }
 
 .hero-subtitle {
-  font-size: $font-size-lg;
+  font-size: $font-size-base;
   color: $neutral-600;
   line-height: $line-height-relaxed;
-  margin-bottom: $space-6;
+  margin-bottom: $space-4;
 }
 
 .hero-trust-signals {
   display: flex;
   flex-direction: column;
   gap: $space-2;
-  margin-bottom: $space-8;
+  margin-bottom: $space-5;
 }
 
 .trust-signal {
