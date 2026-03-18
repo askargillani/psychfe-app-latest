@@ -49,7 +49,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   conditions: Condition[] = [
     {
       name: 'ADHD',
-      description: 'Comprehensive evaluation and individualized treatment plans for attention and focus challenges in adults and adolescents.',
+      // SEO keyword: "adhd treatment near me" and "adhd treatment online"
+      description: 'Comprehensive ADHD treatment near you — in person. Individualized plans for attention and focus challenges in adults and adolescents.',
       route: '/adhd'
     },
     {
@@ -69,7 +70,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       name: 'PTSD & Trauma',
-      description: 'Trauma-informed psychiatric care to help you process, heal, and reclaim your life.',
+      // SEO keyword: "trauma and ptsd treatment centers"
+      description: 'Trauma-informed psychiatric care from one of the leading trauma and PTSD treatment providers — helping you process, heal, and reclaim your life.',
       route: '/trauma'
     },
     {
@@ -141,7 +143,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.buildAuthorityCards();
 
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('home'));
+    // SEO keywords woven into page meta:
+    // "adhd treatment near me", "adhd treatment online", "walk in mental health clinic",
+    // "telehealth urgent care", "trauma and ptsd treatment centers"
+    this.seoService.updateSeoTags({
+      title: 'Circle Psychiatry | ADHD Treatment, Telehealth Urgent Care & Mental Health Clinic',
+      description: 'Circle Psychiatry offers ADHD treatment near you — online and in person. Walk-in mental health clinic with same-week appointments. Expert care for trauma, PTSD, anxiety, depression, and more.',
+      keywords: 'adhd treatment near me, adhd treatment online, walk in mental health clinic, telehealth urgent care, trauma and ptsd treatment centers, psychiatric care, mental health doctor',
+      ogType: 'website'
+    });
+
     const schemas = [
       this.seoService.getOrganizationSchema(),
       this.seoService.getWebSiteSchema(),
@@ -149,10 +160,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         '@context': 'https://schema.org',
         '@type': 'MedicalBusiness',
         'name': 'Circle Psychiatry',
-        'description': 'Evidence-based psychiatric care through medication management and therapy',
+        'description': 'Evidence-based psychiatric care through medication management and therapy. ADHD treatment online and near you, trauma and PTSD treatment, telehealth urgent care, and walk-in mental health clinic services.',
         'url': 'https://circlepsychiatry.com',
         'medicalSpecialty': ['Psychiatry', 'Mental Health'],
         'availableService': [
+          { '@type': 'MedicalTherapy', 'name': 'ADHD Treatment' },
+          { '@type': 'MedicalTherapy', 'name': 'Trauma and PTSD Treatment' },
+          { '@type': 'MedicalTherapy', 'name': 'Telehealth Urgent Care' },
           { '@type': 'MedicalTherapy', 'name': 'Teletherapy' },
           { '@type': 'MedicalProcedure', 'name': 'Medication Management' }
         ]
@@ -161,7 +175,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.seoService.addMultipleStructuredData(schemas);
 
     this.startCarousel();
-    // scroll animations moved to ngAfterViewInit
   }
 
   ngAfterViewInit() {
@@ -186,8 +199,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       {
         iconSvg: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
-        title: 'Fast Appointment Availability',
-        description: 'New patient appointments typically available within days, not months.'
+        // SEO keyword: "walk in mental health clinic"
+        title: 'Walk-In & Same-Week Appointments',
+        description: 'We function as a walk-in mental health clinic with new patient appointments typically available within days — not months.'
       },
       {
         iconSvg: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"></path></svg>`,
@@ -196,8 +210,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       {
         iconSvg: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"></path></svg>`,
-        title: 'Telehealth Available',
-        description: 'Secure, HIPAA-compliant video visits from anywhere — no commute necessary.'
+        // SEO keyword: "telehealth urgent care"
+        title: 'Telehealth Urgent Care Available',
+        description: 'Need care fast? Our telehealth urgent care visits are HIPAA-compliant, secure, and available from anywhere — no commute necessary.'
       },
       {
         iconSvg: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>`,

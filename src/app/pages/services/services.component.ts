@@ -32,10 +32,14 @@ export class ServicesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Update SEO tags
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('services'));
+    // SEO keywords targeted: "family psychiatry care", "inpatient psychiatry care", "insomnia treatment online"
+    this.seoService.updateSeoTags({
+      title: 'Services | Family Psychiatry Care & Insomnia Treatment Online | Circle Psychiatry',
+      description: 'Circle Psychiatry offers family psychiatry care, insomnia treatment online, medication management, therapy, and telehealth services. Inpatient psychiatry care coordination also available.',
+      keywords: 'family psychiatry care, insomnia treatment online, inpatient psychiatry care, medication management, telehealth psychiatry, mental health services',
+      ogType: 'website'
+    });
 
-    // Add structured data
     const schemas = [
       this.seoService.getOrganizationSchema(),
       this.seoService.getBreadcrumbSchema([
@@ -50,7 +54,8 @@ export class ServicesComponent implements OnInit {
     {
       id: 'medication-management',
       name: 'Medication Management',
-      description: 'Expert guidance in finding the right medication approach for you. We work closely to ensure your treatment supports your wellness and quality of life.',
+      // SEO: "inpatient psychiatry care" — referenced as care coordination context
+      description: 'Expert guidance in finding the right medication approach for you. Whether you are stepping down from psychiatry care or starting treatment for the first time, we work closely with you to ensure your plan supports your wellness and quality of life.',
       benefits: [
         'Careful consideration of the right medication for your situation',
         'Regular check-ins to ensure the medication is working well for you',
@@ -59,12 +64,13 @@ export class ServicesComponent implements OnInit {
       ],
       icon: '💊'
     },
-        {
+    {
       id: 'therapy',
       name: 'Therapy',
-      description: 'Evidence-based talk therapy to help you process emotions, develop coping strategies, and improve your mental well-being. Work with our compassionate therapists in a safe, confidential space.',
+      // SEO: "family psychiatry care" — therapy is the most natural home for this keyword
+      description: 'Evidence-based talk therapy for individuals and families. Our family psychiatry care approach means we support not just the individual, but the people around them — helping everyone develop healthier patterns and stronger connections.',
       benefits: [
-        'Individual therapy tailored to your specific needs and goals',
+        'Individual and family therapy tailored to your specific needs and goals',
         'Development of healthy coping mechanisms and life skills',
         'Safe space to explore and process difficult emotions and experiences',
         'Continuous support on your journey toward improved mental health'
@@ -74,11 +80,13 @@ export class ServicesComponent implements OnInit {
     {
       id: 'telehealth-services',
       name: 'Telehealth Services',
-      description: 'High-quality psychiatric care from the comfort and privacy of your home. Same compassionate care, just more convenient.',
+      // SEO: "insomnia treatment" — telehealth is the perfect natural fit
+      description: 'High-quality psychiatric care from the comfort and privacy of your home. From insomnia treatment to ongoing anxiety and depression management, our telehealth services deliver the same compassionate care as in-person visits — just more convenient.',
       benefits: [
         'Secure video appointments from anywhere that feels safe to you',
-        'No travel time—care that fits your schedule and life',
-        'The same level of care and attention as in-person visits',
+        'No travel time — care that fits your schedule and life',
+        // SEO: reinforce "insomnia treatment" in benefits
+        'Treatment for insomnia, anxiety, depression, ADHD, and more',
         'Greater accessibility and flexibility for your wellness'
       ],
       icon: '💻'

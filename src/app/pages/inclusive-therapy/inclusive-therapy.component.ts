@@ -20,7 +20,16 @@ export class InclusiveTherapyComponent implements OnInit {
   constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('inclusive-therapy'));
+    // SEO keywords targeted:
+    // "grow therapy" (100k+ searches, 95k traffic potential, Medium difficulty)
+    // "inclusive therapy" (100+ searches, 3.5k traffic potential, Easy)
+    // "culturally competent therapist" (100+ searches, 180 traffic potential, Easy)
+    this.seoService.updateSeoTags({
+      title: 'Inclusive Therapy & Grow Therapy Alternative | Culturally Competent Therapist | Circle Psychiatry',
+      description: 'Looking for inclusive therapy or a culturally competent therapist? Circle Psychiatry offers compassionate, affirming psychiatric care that celebrates every identity. A trusted grow therapy alternative.',
+      keywords: 'grow therapy, inclusive therapy, culturally competent therapist, inclusive psychiatric care, affirming mental health care',
+      ogType: 'website'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -32,6 +41,7 @@ export class InclusiveTherapyComponent implements OnInit {
     ];
     this.seoService.addMultipleStructuredData(schemas);
   }
+
   symptoms: Symptom[] = [
     {
       title: 'Cultural Competence',
@@ -42,8 +52,9 @@ export class InclusiveTherapyComponent implements OnInit {
       description: 'Ensuring all individuals have equal access to quality care regardless of background'
     },
     {
-      title: 'Identity Affirmation',
-      description: 'Affirming and validating all aspects of identity including gender, sexual orientation, and ethnicity'
+      title: 'Inclusive Therapy for Every Identity',
+      // SEO keyword: "inclusive therapy"
+      description: 'Inclusive therapy that validates and celebrates your sexual orientation, gender identity, and lived experience without judgment'
     },
     {
       title: 'Safe Space',

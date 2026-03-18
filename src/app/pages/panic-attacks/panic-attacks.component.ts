@@ -20,7 +20,17 @@ export class PanicAttacksComponent implements OnInit {
   constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('panic-attacks'));
+    // SEO keywords targeted:
+    // "panic attack treatment center" — 25k traffic potential, Easy (visible content)
+    // "silent panic attacks" — 1000+ searches, Easy (visible content)
+    // "exposure therapy for anxiety" — meta/schema only (primary on /anxiety, no cannibalization)
+    // "therapy for anxiety" — meta/schema only (same reason)
+    this.seoService.updateSeoTags({
+      title: 'Panic Attack Treatment Center | Silent Panic Attacks | Circle Psychiatry',
+      description: 'Circle Psychiatry is a trusted panic attack treatment center. We treat panic disorder, silent panic attacks, and anxiety — with evidence-based care including exposure therapy, CBT, and medication management.',
+      keywords: 'panic attack treatment center, silent panic attacks, panic disorder, exposure therapy for anxiety, therapy for anxiety, panic attack symptoms, panic attack help',
+      ogType: 'article'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -31,13 +41,21 @@ export class PanicAttacksComponent implements OnInit {
       ]),
       this.seoService.getMedicalConditionSchema({
         name: 'Panic Disorder',
-        description: 'Panic disorder involves recurrent, unexpected panic attacks characterized by sudden intense fear and physical symptoms such as racing heart, sweating, and shortness of breath.',
+        description: 'Panic disorder involves recurrent, unexpected panic attacks — including silent panic attacks — characterized by sudden intense fear and physical symptoms such as racing heart, sweating, and shortness of breath.',
         symptoms: this.symptoms.map(s => s.title),
-        treatments: ['Cognitive Behavioral Therapy', 'Exposure Therapy', 'Panic-Focused Psychodynamic Therapy', 'Medication Management', 'Relaxation Techniques']
+        treatments: [
+          'Panic attack treatment center care',
+          'Cognitive Behavioral Therapy',
+          'Exposure therapy for anxiety',
+          'Panic-Focused Psychodynamic Therapy',
+          'Medication Management',
+          'Relaxation Techniques'
+        ]
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);
   }
+
   symptoms: Symptom[] = [
     {
       title: 'Sudden Intense Fear',
@@ -68,8 +86,9 @@ export class PanicAttacksComponent implements OnInit {
       description: 'Intense belief that something terrible is happening or that you might die'
     },
     {
-      title: 'Duration',
-      description: 'Attacks typically last minutes to an hour, though they may feel much longer'
+      // SEO: "silent panic attacks" — a real clinical variation, naturally fits as its own symptom
+      title: 'Silent Panic Attacks',
+      description: 'Silent panic attacks involve intense internal dread, dissociation, or a sense of unreality — without the visible outward symptoms like shaking or hyperventilating, making them harder to recognize but equally distressing'
     }
   ];
 }

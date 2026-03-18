@@ -20,7 +20,15 @@ export class TraumaComponent implements OnInit {
   constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('trauma'));
+    // SEO keywords targeted:
+    // "trauma and ptsd treatment centers" (100+ searches, 1.3k traffic potential, Easy) — from report
+    // "trauma treatment center colorado" (100+ searches, 120 traffic potential, Easy) — local keyword
+    this.seoService.updateSeoTags({
+      title: 'Trauma & PTSD Treatment Center Colorado | Circle Psychiatry',
+      description: 'Circle Psychiatry is a leading trauma and PTSD treatment center in Colorado. Compassionate, evidence-based care for PTSD, trauma recovery, and complex trauma — in person and via telehealth.',
+      keywords: 'trauma and ptsd treatment centers, trauma treatment center colorado, PTSD treatment, trauma therapy, EMDR, complex trauma, trauma recovery colorado',
+      ogType: 'article'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -33,11 +41,19 @@ export class TraumaComponent implements OnInit {
         name: 'Post-Traumatic Stress Disorder (PTSD)',
         description: 'PTSD is a mental health condition triggered by experiencing or witnessing a traumatic event, characterized by flashbacks, nightmares, severe anxiety, and uncontrollable thoughts.',
         symptoms: this.symptoms.map(s => s.title),
-        treatments: ['Cognitive Behavioral Therapy', 'EMDR Therapy', 'Exposure Therapy', 'Medication Management', 'Group Therapy']
+        treatments: [
+          'Cognitive Behavioral Therapy',
+          'EMDR Therapy',
+          'Exposure Therapy',
+          'Medication Management',
+          'Group Therapy',
+          'Trauma and PTSD treatment center care (Colorado)'
+        ]
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);
   }
+
   symptoms: Symptom[] = [
     {
       title: 'Flashbacks',

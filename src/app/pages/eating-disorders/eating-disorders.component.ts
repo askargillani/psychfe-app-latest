@@ -20,7 +20,19 @@ export class EatingDisordersComponent implements OnInit {
   constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('eating-disorders'));
+    // No direct report keywords for this page.
+    // Natural page keywords (visible content where they fit, meta otherwise):
+    // "eating disorder treatment" — primary, direct page topic (meta + any natural HTML fit)
+    // "anorexia treatment" / "binge eating disorder" — specific condition keywords (meta only)
+    // Report keywords included in meta only (already primary on other pages):
+    // "inpatient depression treatment" — eating disorders co-occur with depression, inpatient care relevant
+    // "mood disorders" — eating disorders are strongly linked with mood disorders
+    this.seoService.updateSeoTags({
+      title: 'Eating Disorder Treatment | Anorexia, Bulimia & Binge Eating | Circle Psychiatry',
+      description: 'Compassionate eating disorder treatment at Circle Psychiatry. We treat anorexia, bulimia, and binge eating disorder with evidence-based care — including support for co-occurring mood disorders and depression.',
+      keywords: 'eating disorder treatment, anorexia treatment, binge eating disorder, bulimia treatment, mood disorders, inpatient depression treatment, eating disorder recovery',
+      ogType: 'article'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -33,11 +45,21 @@ export class EatingDisordersComponent implements OnInit {
         name: 'Eating Disorders',
         description: 'Eating disorders involve severe disturbances in eating behaviors and related thoughts and emotions, including anorexia, bulimia, and binge eating disorder.',
         symptoms: this.symptoms.map(s => s.title),
-        treatments: ['Cognitive Behavioral Therapy', 'Nutritional Counseling', 'Medication Management', 'Family-Based Therapy', 'Group Therapy']
+        treatments: [
+          'Eating disorder treatment',
+          'Cognitive Behavioral Therapy',
+          'Nutritional Counseling',
+          'Medication Management',
+          'Family-Based Therapy',
+          'Group Therapy',
+          'Co-occurring mood disorder treatment',
+          'Inpatient depression treatment coordination'
+        ]
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);
   }
+
   symptoms: Symptom[] = [
     {
       title: 'Severe Dietary Restriction',

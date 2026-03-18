@@ -22,10 +22,17 @@ export class AnxietyComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Update SEO tags
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('anxiety'));
+    // SEO keywords targeted:
+    // "exposure therapy for anxiety" (2.4k traffic potential, Medium)
+    // "silent panic attacks" (1000+ searches, Easy)
+    // "therapy for anxiety" (seed keyword from report)
+    this.seoService.updateSeoTags({
+      title: 'Therapy for Anxiety | Exposure Therapy & Silent Panic Attacks | Circle Psychiatry',
+      description: 'Expert therapy for anxiety disorders including exposure therapy, panic attacks, and silent panic attacks. Circle Psychiatry provides evidence-based, personalized anxiety treatment in person and online.',
+      keywords: 'therapy for anxiety, exposure therapy for anxiety, silent panic attacks, anxiety treatment, panic disorder, generalized anxiety disorder, social anxiety',
+      ogType: 'article'
+    });
 
-    // Add structured data
     const schemas = [
       this.seoService.getOrganizationSchema(),
       this.seoService.getBreadcrumbSchema([
@@ -36,8 +43,15 @@ export class AnxietyComponent implements OnInit {
       this.seoService.getMedicalConditionSchema({
         name: 'Anxiety Disorder',
         description: 'Anxiety disorders involve excessive worry, fear, or nervousness that interferes with daily life.',
-        symptoms: ['Excessive worry', 'Physical symptoms', 'Sleep disturbances', 'Panic attacks', 'Avoidance behaviors'],
-        treatments: ['Teletherapy', 'Medication management', 'Cognitive behavioral therapy', 'Stress management']
+        symptoms: ['Excessive worry', 'Physical symptoms', 'Sleep disturbances', 'Panic attacks', 'Silent panic attacks', 'Avoidance behaviors'],
+        treatments: [
+          'Therapy for anxiety',
+          'Exposure therapy for anxiety',
+          'Medication management',
+          'Cognitive behavioral therapy',
+          'Stress management',
+          'Telehealth visits'
+        ]
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);
@@ -59,6 +73,11 @@ export class AnxietyComponent implements OnInit {
     {
       title: 'Panic Attacks',
       description: 'Sudden intense episodes of fear accompanied by physical symptoms like chest pain or dizziness'
+    },
+    {
+      // SEO keyword: "silent panic attacks" — a real clinical variation many patients search for
+      title: 'Silent Panic Attacks',
+      description: 'Silent panic attacks cause intense internal fear and distress without obvious outward signs — no shaking or hyperventilating, but overwhelming dread, dizziness, or a sense of unreality'
     },
     {
       title: 'Avoidance Behaviors',

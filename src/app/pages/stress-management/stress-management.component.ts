@@ -20,7 +20,17 @@ export class StressManagementComponent implements OnInit {
   constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('stress-management'));
+    // No strong report keywords fit this page for visible content.
+    // Meta tags updated with closest report keyword matches:
+    // "therapy for anxiety" — stress and anxiety are clinically linked
+    // "exposure therapy for anxiety" — relevant as a treatment approach for stress-related conditions
+    // "psychiatric care" / "mental health doctor" — seed keywords from report
+    this.seoService.updateSeoTags({
+      title: 'Stress Management & Relief | Circle Psychiatry',
+      description: 'Expert stress management care at Circle Psychiatry. Our mental health doctors provide psychiatric care and therapy for anxiety, stress, and related conditions — helping you build resilience and improve quality of life.',
+      keywords: 'stress management, therapy for anxiety, exposure therapy for anxiety, psychiatric care, mental health doctor, stress relief, chronic stress',
+      ogType: 'website'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -32,6 +42,7 @@ export class StressManagementComponent implements OnInit {
     ];
     this.seoService.addMultipleStructuredData(schemas);
   }
+
   symptoms: Symptom[] = [
     {
       title: 'Acute Stress',
@@ -39,7 +50,8 @@ export class StressManagementComponent implements OnInit {
     },
     {
       title: 'Chronic Stress',
-      description: 'Ongoing, long-term stress from persistent life challenges or difficult situations'
+      // SEO: "chronic stress treatment" referenced naturally in the card most relevant to it
+      description: 'Ongoing, long-term stress from persistent life challenges — chronic stress treatment is available and effective when these patterns begin affecting your health and daily functioning'
     },
     {
       title: 'Stress Eating',

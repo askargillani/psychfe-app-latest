@@ -22,7 +22,15 @@ export class ADHDComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('adhd'));
+    // SEO keywords targeted:
+    // "adhd treatment near me" (1000+ searches, Easy) — visible in page content
+    // "adhd treatment online" (3.5k traffic potential, Medium) — meta/schema only, not shown on page
+    this.seoService.updateSeoTags({
+      title: 'ADHD Treatment Near Me & Online | Circle Psychiatry',
+      description: 'Looking for ADHD treatment near you or online? Circle Psychiatry offers comprehensive in-person and telehealth ADHD care for adults and adolescents — with same-week appointments available.',
+      keywords: 'adhd treatment near me, adhd treatment online, ADHD care, adult ADHD, ADHD medication management, attention deficit disorder',
+      ogType: 'article'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -35,7 +43,14 @@ export class ADHDComponent implements OnInit {
         name: 'ADHD',
         description: 'Attention-Deficit/Hyperactivity Disorder (ADHD) affects attention, impulse control, and activity levels.',
         symptoms: ['Difficulty focusing', 'Hyperactivity', 'Impulsivity', 'Time management issues', 'Emotional dysregulation'],
-        treatments: ['Medication management', 'Behavioral therapy', 'Cognitive training', 'Lifestyle modifications']
+        treatments: [
+          'ADHD treatment near me (in-person)',
+          'ADHD treatment online (telehealth)',
+          'Medication management',
+          'Behavioral therapy',
+          'Cognitive training',
+          'Lifestyle modifications'
+        ]
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);

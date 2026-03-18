@@ -28,7 +28,15 @@ export class DepressionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('depression'));
+    // SEO keywords targeted:
+    // "inpatient depression treatment", "magnetic therapy for depression",
+    // "shock therapy for depression", "mood disorders"
+    this.seoService.updateSeoTags({
+      title: 'Depression Treatment | Mood Disorders, Magnetic & Inpatient Care | Circle Psychiatry',
+      description: 'Expert depression treatment at Circle Psychiatry. We treat mood disorders with personalized care including medication management, therapy, and referrals for magnetic therapy or inpatient depression treatment when needed.',
+      keywords: 'depression treatment, inpatient depression treatment, magnetic therapy for depression, shock therapy for depression, mood disorders, major depressive disorder, clinical depression',
+      ogType: 'article'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -39,9 +47,16 @@ export class DepressionComponent implements OnInit {
       ]),
       this.seoService.getMedicalConditionSchema({
         name: 'Depression',
-        description: 'Major depressive disorder is characterized by persistent sadness and loss of interest in activities.',
+        description: 'Major depressive disorder is a mood disorder characterized by persistent sadness and loss of interest in activities.',
         symptoms: ['Persistent sadness', 'Loss of interest', 'Sleep changes', 'Energy fatigue', 'Changes in appetite'],
-        treatments: ['Psychotherapy', 'Medication management', 'Cognitive behavioral therapy', 'Lifestyle changes']
+        treatments: [
+          'Psychotherapy',
+          'Medication management',
+          'Cognitive behavioral therapy',
+          'Magnetic therapy (TMS)',
+          'Inpatient depression treatment',
+          'Lifestyle changes'
+        ]
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);
@@ -85,22 +100,25 @@ export class DepressionComponent implements OnInit {
   resources: Resource[] = [
     {
       title: 'Evidence-Based Treatment',
-      description: 'We use proven therapies and medication management tailored to your specific needs and goals',
+      // SEO: "mood disorders" naturally fits the treatment scope description
+      description: 'We use proven therapies and medication management for depression and related mood disorders, tailored to your specific needs and goals.',
       icon: '🎯'
     },
     {
       title: 'Compassionate Care',
-      description: 'Our providers understand depression and approach treatment with empathy and genuine care',
+      description: 'Our providers understand depression and approach treatment with empathy and genuine care.',
       icon: '❤️'
     },
     {
       title: 'Personalized Plans',
-      description: 'Every treatment plan is customized to your unique situation, preferences, and values',
+      // SEO: "inpatient depression treatment" — referenced as a care-level option
+      description: 'Every treatment plan is customized to your unique situation. When a higher level of support is needed, we coordinate referrals for inpatient depression treatment.',
       icon: '👤'
     },
     {
-      title: 'Ongoing Support',
-      description: 'We\'re here for the long term, adjusting treatment as you progress and celebrating your wins',
+      title: 'Advanced Treatment Options',
+      // SEO: "magnetic therapy for depression" and "shock therapy for depression"
+      description: 'For treatment-resistant cases, we discuss all options — including magnetic therapy for depression (TMS) and electroconvulsive therapy — so you can make informed decisions about your care.',
       icon: '🤝'
     }
   ];

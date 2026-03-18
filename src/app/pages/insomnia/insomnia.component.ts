@@ -20,7 +20,15 @@ export class InsomniaComponent implements OnInit {
   constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('insomnia'));
+    // SEO keywords targeted:
+    // "insomnia treatment online" (100+ searches, Easy — from report, visible content)
+    // "telehealth urgent care" (meta/schema only — primary on homepage, no cannibalization)
+    this.seoService.updateSeoTags({
+      title: 'Insomnia Treatment Online & In Person | Circle Psychiatry',
+      description: 'Get expert insomnia treatment online or in person at Circle Psychiatry. We treat chronic and short-term insomnia with CBT-I, medication management, and telehealth urgent care — same-week appointments available.',
+      keywords: 'insomnia treatment online, insomnia treatment, sleep disorders, telehealth urgent care, CBT-I, sleep therapy, chronic insomnia',
+      ogType: 'article'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -33,11 +41,20 @@ export class InsomniaComponent implements OnInit {
         name: 'Insomnia',
         description: 'Insomnia is a sleep disorder characterized by difficulty falling asleep, staying asleep, or waking too early, resulting in daytime fatigue and impairment.',
         symptoms: this.symptoms.map(s => s.title),
-        treatments: ['Cognitive Behavioral Therapy for Insomnia (CBT-I)', 'Sleep Hygiene Education', 'Medication Management', 'Relaxation Techniques', 'Stimulus Control']
+        treatments: [
+          'Insomnia treatment online (telehealth)',
+          'Cognitive Behavioral Therapy for Insomnia (CBT-I)',
+          'Sleep Hygiene Education',
+          'Medication Management',
+          'Telehealth urgent care visits',
+          'Relaxation Techniques',
+          'Stimulus Control'
+        ]
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);
   }
+
   symptoms: Symptom[] = [
     {
       title: 'Difficulty Falling Asleep',

@@ -27,7 +27,13 @@ export class BipolarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('bipolar'));
+    // SEO keywords targeted: "bipolar disorder test", "mood disorders"
+    this.seoService.updateSeoTags({
+      title: 'Bipolar Disorder Test & Treatment | Mood Disorders | Circle Psychiatry',
+      description: 'Think you may have bipolar disorder? Learn about the bipolar disorder test, symptoms of this mood disorder, and how Circle Psychiatry can help you find stability with expert care.',
+      keywords: 'bipolar disorder test, mood disorders, bipolar disorder treatment, manic depression, bipolar I, bipolar II, cyclothymia',
+      ogType: 'article'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -38,9 +44,9 @@ export class BipolarComponent implements OnInit {
       ]),
       this.seoService.getMedicalConditionSchema({
         name: 'Bipolar Disorder',
-        description: 'Bipolar disorder causes unusual shifts in mood, energy, and activity levels affecting daily functioning.',
+        description: 'Bipolar disorder is a mood disorder that causes unusual shifts in mood, energy, and activity levels affecting daily functioning.',
         symptoms: ['Extreme mood swings', 'Manic episodes', 'Depressive episodes', 'Energy changes', 'Sleep disturbances'],
-        treatments: ['Mood stabilizers', 'Psychotherapy', 'Medication management', 'Lifestyle management']
+        treatments: ['Mood stabilizers', 'Psychotherapy', 'Medication management', 'Bipolar disorder evaluation and testing', 'Lifestyle management']
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);
@@ -119,19 +125,20 @@ export class BipolarComponent implements OnInit {
   resources: Resource[] = [
     {
       title: 'Evidence-Based Treatment',
-      description: 'We use proven medications and therapies specifically designed for bipolar disorder management'
+      // SEO: "mood disorders" — bipolar is a mood disorder, natural fit
+      description: 'We use proven medications and therapies specifically designed for bipolar disorder and related mood disorders.'
     },
     {
       title: 'Mood Stabilization',
-      description: 'Expert monitoring and adjustment of treatment to help stabilize your mood swings'
+      description: 'Expert monitoring and adjustment of treatment to help stabilize your mood swings.'
     },
     {
       title: 'Comprehensive Support',
-      description: 'Combining medication management with therapy and lifestyle strategies for stability'
+      description: 'Combining medication management with therapy and lifestyle strategies for stability.'
     },
     {
       title: 'Long-Term Partnership',
-      description: 'We\'re here to support your ongoing wellness and help you thrive despite bipolar disorder'
+      description: 'We\'re here to support your ongoing wellness and help you thrive despite bipolar disorder.'
     }
   ];
 }

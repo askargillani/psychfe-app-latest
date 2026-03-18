@@ -20,7 +20,18 @@ export class MoodDisordersComponent implements OnInit {
   constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
-    this.seoService.updateSeoTags(this.seoService.getPageSeoData('mood-disorders'));
+    // SEO keywords targeted:
+    // "mood disorders" — core page topic, signals topical authority
+    // "mood stabilizers" — high-intent keyword, patients researching treatment land here
+    // "bipolar disorder test" — secondary reference (primary on /bipolar), fits as mood disorders include bipolar
+    // "magnetic therapy for depression" / "shock therapy for depression" — meta/schema only,
+    //   already used on /depression page so kept out of visible content here to avoid duplication
+    this.seoService.updateSeoTags({
+      title: 'Mood Disorders Treatment & Mood Stabilizers | Circle Psychiatry',
+      description: 'Expert mood disorders treatment at Circle Psychiatry. We offer mood stabilizers, therapy, and comprehensive care for depression, bipolar disorder, and related conditions — including evaluation for a bipolar disorder test.',
+      keywords: 'mood disorders, mood stabilizers, bipolar disorder test, magnetic therapy for depression, shock therapy for depression, depression treatment, bipolar disorder treatment',
+      ogType: 'article'
+    });
 
     const schemas = [
       this.seoService.getOrganizationSchema(),
@@ -33,11 +44,21 @@ export class MoodDisordersComponent implements OnInit {
         name: 'Mood Disorders',
         description: 'Mood disorders involve persistent disturbances in mood that affect daily functioning, including major depression, bipolar disorder, and persistent depressive disorder.',
         symptoms: this.symptoms.map(s => s.title),
-        treatments: ['Cognitive Behavioral Therapy', 'Medication Management', 'Interpersonal Therapy', 'Mood Stabilizers', 'Psychoeducation']
+        treatments: [
+          'Mood stabilizers',
+          'Cognitive Behavioral Therapy',
+          'Medication Management',
+          'Interpersonal Therapy',
+          'Magnetic therapy for depression (TMS)',
+          'Electroconvulsive therapy (shock therapy for depression)',
+          'Bipolar disorder evaluation and testing',
+          'Psychoeducation'
+        ]
       })
     ];
     this.seoService.addMultipleStructuredData(schemas);
   }
+
   symptoms: Symptom[] = [
     {
       title: 'Persistent Sadness',
