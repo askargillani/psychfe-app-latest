@@ -94,6 +94,17 @@ export class BlogComponent implements OnInit {
       category: 'Mental Health',
       image: '/assets/suicide-prevention.jpg',
       readTime: '8 min read'
+    },
+    {
+      id: 'bipolar-disorder-mdq-screener',
+      title: "Bipolar Disorder Awareness: Recognizing the Signs, Using the MDQ Screener, and Finding Help",
+      excerpt: "Bipolar disorder is one of the most misunderstood and underdiagnosed mental health conditions. Mood swings that go beyond everyday ups and downs, periods of unusually high energy, impulsive decisions, and stretches of deep depression can all point to bipolar disorder. The Mood Disorder Questionnaire (MDQ) is a clinically validated, quick screening tool that can help you and your clinician decide whether a full evaluation is needed.",
+      content: '',
+      author: 'Circle Psych Team',
+      date: new Date('2026-03-26'),
+      category: 'Mental Health',
+      image: '/assets/bipolar-disorder-awareness.jpg',
+      readTime: '9 min read'
     }
   ];
 
