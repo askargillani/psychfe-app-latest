@@ -613,6 +613,11 @@
   flex: 1;
   overflow: hidden;
   padding: $space-4 0 $space-8;
+
+  @media (max-width: $breakpoint-md) {
+    padding-left: calc(50% - 150px); // 150px = half of card width (300px)
+    padding-right: calc(50% - 150px);
+  }
 }
 
 .carousel-track {
@@ -944,13 +949,4 @@
 // ─── RESPONSIVE BODY PADDING (for mobile booking bar) ─────────────────────────
 @media (max-width: $breakpoint-md) {
   :host { display: block; padding-bottom: 76px; }
-}
-
-@media (max-width: $breakpoint-md){
-  .carousel-track{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4.5rem;
-  }
 }

@@ -229,8 +229,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getCarouselOffset(): number {
-    const cardWidth = 350;
-    const gap = 24;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const cardWidth = isMobile ? 300 : 350;
+    const gap = isMobile ? 24 : 24;
     const cardWithGap = cardWidth + gap;
     return -this.currentTestimonialIndex * cardWithGap;
   }
